@@ -1,0 +1,5130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1,
+      maximum-scale=1,
+      user-scalable=no,
+      viewport-fit=cover">
+
+<meta name="theme-color" content="#020202">
+
+<title>Our Little Date ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --black:#020202;
+    --black2:#070707;
+    --black3:#0d0d0d;
+
+    --red:#ff1744;
+    --red2:#b00020;
+    --red3:#650016;
+
+    --white:#f8f8f8;
+    --muted:#9a9a9a;
+
+    --line:rgba(255,23,68,.20);
+    --glass:rgba(255,255,255,.035);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+    background:#020202;
+}
+
+body{
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(255,0,40,.10),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(255,0,40,.045),
+            transparent 30%
+        ),
+        #020202;
+
+    color:var(--white);
+
+    font-family:Inter,sans-serif;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+}
+
+/* =========================================================
+   CINEMATIC OVERLAY
+========================================================= */
+
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:9998;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,.018) 0px,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    opacity:.35;
+}
+
+body::after{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:9997;
+
+    box-shadow:
+        inset 0 0 180px rgba(0,0,0,.95),
+        inset 0 0 60px rgba(255,0,40,.03);
+}
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+#scrollProgress{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:0%;
+    height:2px;
+
+    background:var(--red);
+
+    box-shadow:
+        0 0 12px var(--red),
+        0 0 30px rgba(255,23,68,.7);
+
+    z-index:10000;
+}
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+section{
+    position:relative;
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:80px 20px;
+}
+
+.container{
+    width:min(900px,100%);
+    margin:auto;
+}
+
+.center{
+    text-align:center;
+}
+
+.mono{
+    font-family:"Space Mono",monospace;
+}
+
+.serif{
+    font-family:"Cormorant Garamond",serif;
+}
+
+/* =========================================================
+   RAIN
+========================================================= */
+
+.rain{
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    opacity:.30;
+}
+
+.drop{
+    position:absolute;
+
+    top:-120px;
+
+    width:1px;
+
+    height:90px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255,255,255,.4)
+        );
+
+    transform:rotate(12deg);
+
+    animation:rainFall linear infinite;
+}
+
+@keyframes rainFall{
+
+    from{
+        transform:
+            translate3d(0,-120px,0)
+            rotate(12deg);
+    }
+
+    to{
+        transform:
+            translate3d(-180px,120vh,0)
+            rotate(12deg);
+    }
+
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,0,40,.12),
+            transparent 40%
+        );
+}
+
+.heroContent{
+    position:relative;
+    z-index:2;
+
+    width:min(800px,100%);
+
+    text-align:center;
+}
+
+.eyebrow{
+    font-family:"Space Mono",monospace;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    color:var(--red);
+
+    margin-bottom:30px;
+
+    text-transform:uppercase;
+
+    opacity:.9;
+}
+
+.heroTitle{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(60px,13vw,130px);
+
+    font-weight:300;
+
+    line-height:.82;
+
+    letter-spacing:-4px;
+
+    margin-bottom:35px;
+
+    text-shadow:
+        0 0 30px rgba(255,23,68,.18);
+}
+
+.heroTitle span{
+    color:var(--red);
+}
+
+.heroSubtitle{
+    max-width:600px;
+
+    margin:0 auto 45px;
+
+    color:#aaa;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(21px,4vw,30px);
+
+    line-height:1.45;
+
+    font-weight:300;
+}
+
+.playButton{
+    border:1px solid rgba(255,23,68,.6);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,23,68,.16),
+            rgba(255,23,68,.03)
+        );
+
+    color:white;
+
+    padding:18px 32px;
+
+    min-width:230px;
+
+    border-radius:3px;
+
+    font-family:"Space Mono",monospace;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+        0 0 20px rgba(255,23,68,.08);
+}
+
+.playButton:hover{
+    transform:translateY(-3px);
+
+    border-color:var(--red);
+
+    box-shadow:
+        0 0 30px rgba(255,23,68,.25);
+}
+
+.playButton:active{
+    transform:scale(.97);
+}
+
+.musicStatus{
+    margin-top:18px;
+
+    min-height:18px;
+
+    color:#777;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    font-family:"Space Mono",monospace;
+}
+
+/* =========================================================
+   MUSIC BAR
+========================================================= */
+
+.musicBar{
+    position:fixed;
+
+    left:50%;
+
+    bottom:20px;
+
+    transform:
+        translateX(-50%)
+        translateY(120px);
+
+    z-index:9000;
+
+    width:min(430px,calc(100% - 30px));
+
+    padding:10px 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    background:rgba(5,5,5,.88);
+
+    border:1px solid rgba(255,23,68,.25);
+
+    backdrop-filter:blur(14px);
+
+    transition:.5s;
+
+    opacity:0;
+}
+
+.musicBar.show{
+    transform:translateX(-50%) translateY(0);
+    opacity:1;
+}
+
+.musicInfo{
+    min-width:0;
+}
+
+.musicLabel{
+    color:var(--red);
+
+    font-family:"Space Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:1px;
+}
+
+.musicSong{
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    color:#ccc;
+
+    font-size:11px;
+
+    margin-top:3px;
+}
+
+.musicToggle{
+    flex:none;
+
+    border:1px solid rgba(255,23,68,.35);
+
+    background:transparent;
+
+    color:white;
+
+    padding:8px 11px;
+
+    cursor:pointer;
+
+    font-size:10px;
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    background:
+        linear-gradient(
+            to bottom,
+            #020202,
+            #050505
+        );
+}
+
+.sectionNumber{
+    font-family:"Space Mono",monospace;
+
+    color:var(--red);
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    margin-bottom:25px;
+}
+
+.bigText{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(44px,8vw,80px);
+
+    font-weight:300;
+
+    line-height:1;
+
+    margin-bottom:30px;
+}
+
+.description{
+    max-width:650px;
+
+    margin:auto;
+
+    color:#aaa;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:24px;
+
+    line-height:1.55;
+}
+
+/* =========================================================
+   DATE QUESTION
+========================================================= */
+
+.questionSection{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,0,40,.09),
+            transparent 45%
+        );
+}
+
+.questionCard{
+    width:min(700px,100%);
+
+    text-align:center;
+
+    padding:55px 30px;
+
+    border:
+        1px solid
+        rgba(255,23,68,.16);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.5);
+}
+
+.question{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(42px,8vw,75px);
+
+    font-weight:300;
+
+    line-height:1;
+
+    margin-bottom:20px;
+}
+
+.questionSmall{
+    color:#777;
+
+    font-size:12px;
+
+    margin-bottom:40px;
+
+    font-family:"Space Mono",monospace;
+}
+
+.choiceRow{
+    display:flex;
+
+    justify-content:center;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+}
+
+.btn{
+    appearance:none;
+
+    border:1px solid rgba(255,23,68,.4);
+
+    background:#090909;
+
+    color:white;
+
+    padding:15px 28px;
+
+    min-width:120px;
+
+    cursor:pointer;
+
+    font-family:"Space Mono",monospace;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    border-color:var(--red);
+
+    box-shadow:
+        0 0 25px rgba(255,23,68,.15);
+
+    transform:translateY(-2px);
+}
+
+.btn.primary{
+    background:
+        linear-gradient(
+            135deg,
+            #8d001b,
+            #ff1744
+        );
+
+    border-color:var(--red);
+}
+
+.btn.noBtn{
+    background:#080808;
+
+    color:#aaa;
+}
+
+#noMessage{
+    min-height:35px;
+
+    margin-top:25px;
+
+    color:#999;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:21px;
+
+    transition:.3s;
+}
+
+/* =========================================================
+   YES INTRO
+========================================================= */
+
+.hidden{
+    display:none !important;
+}
+
+.fadeIn{
+    animation:fadeIn .8s ease both;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.yesIntro{
+    min-height:auto;
+
+    padding-top:40px;
+
+    padding-bottom:100px;
+}
+
+.yesTitle{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(42px,8vw,75px);
+
+    font-weight:300;
+
+    margin-bottom:20px;
+}
+
+.yesTitle span{
+    color:var(--red);
+}
+
+.yesText{
+    color:#999;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:22px;
+
+    line-height:1.6;
+
+    max-width:650px;
+
+    margin:0 auto 35px;
+}
+
+/* =========================================================
+   PLANNER
+========================================================= */
+
+.plannerSection{
+    min-height:auto;
+
+    padding-top:30px;
+
+    padding-bottom:120px;
+}
+
+.planner{
+    width:min(780px,100%);
+
+    margin:auto;
+
+    border:
+        1px solid
+        rgba(255,23,68,.15);
+
+    background:
+        rgba(255,255,255,.025);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.55);
+}
+
+.plannerHeader{
+    padding:25px;
+
+    border-bottom:
+        1px solid
+        rgba(255,23,68,.12);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+}
+
+.plannerHeaderTitle{
+    font-family:"Space Mono",monospace;
+
+    color:var(--red);
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+.stepCounter{
+    color:#666;
+
+    font-family:"Space Mono",monospace;
+
+    font-size:9px;
+}
+
+.progressTrack{
+    height:2px;
+
+    background:#151515;
+
+    width:100%;
+}
+
+.progressFill{
+    height:100%;
+
+    width:10%;
+
+    background:var(--red);
+
+    box-shadow:
+        0 0 15px var(--red);
+
+    transition:.4s;
+}
+
+.step{
+    display:none;
+
+    padding:45px 35px 40px;
+}
+
+.step.active{
+    display:block;
+
+    animation:stepIn .45s ease both;
+}
+
+@keyframes stepIn{
+
+    from{
+        opacity:0;
+        transform:translateX(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+.stepNumber{
+    font-family:"Space Mono",monospace;
+
+    font-size:9px;
+
+    color:var(--red);
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
+}
+
+.stepTitle{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(35px,7vw,55px);
+
+    font-weight:300;
+
+    line-height:1;
+
+    margin-bottom:15px;
+}
+
+.stepHint{
+    color:#777;
+
+    font-size:12px;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+}
+
+.fieldLabel{
+    display:block;
+
+    color:#888;
+
+    font-family:"Space Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    margin-bottom:10px;
+
+    text-transform:uppercase;
+}
+
+input,
+textarea{
+    width:100%;
+
+    border:1px solid rgba(255,23,68,.18);
+
+    background:#070707;
+
+    color:white;
+
+    padding:15px;
+
+    outline:none;
+
+    font-family:Inter,sans-serif;
+
+    font-size:14px;
+
+    border-radius:0;
+}
+
+input:focus,
+textarea:focus{
+    border-color:rgba(255,23,68,.6);
+
+    box-shadow:
+        0 0 20px rgba(255,23,68,.07);
+}
+
+input[type="date"],
+input[type="time"]{
+    color-scheme:dark;
+}
+
+textarea{
+    min-height:150px;
+
+    resize:vertical;
+
+    line-height:1.6;
+}
+
+.optionGrid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:10px;
+}
+
+.option{
+    width:100%;
+
+    min-height:58px;
+
+    border:1px solid rgba(255,23,68,.16);
+
+    background:#070707;
+
+    color:#bbb;
+
+    cursor:pointer;
+
+    padding:15px;
+
+    text-align:left;
+
+    font-size:12px;
+
+    transition:.25s;
+}
+
+.option:hover{
+    border-color:rgba(255,23,68,.5);
+
+    color:white;
+}
+
+.option.selected{
+    border-color:var(--red);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,23,68,.15),
+            rgba(255,23,68,.03)
+        );
+
+    color:white;
+
+    box-shadow:
+        inset 0 0 20px rgba(255,23,68,.04);
+}
+
+.optionTitle{
+    display:block;
+
+    font-family:"Space Mono",monospace;
+
+    font-size:10px;
+
+    margin-bottom:4px;
+}
+
+.optionDesc{
+    color:#666;
+
+    font-size:10px;
+}
+
+.option.selected .optionDesc{
+    color:#999;
+}
+
+.plannerButtons{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-top:35px;
+
+    padding-top:25px;
+
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+/* =========================================================
+   DATE RESULT
+========================================================= */
+
+.resultSection{
+    min-height:auto;
+
+    padding-top:50px;
+
+    padding-bottom:120px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,0,40,.08),
+            transparent 50%
+        );
+}
+
+.resultCard{
+    width:min(850px,100%);
+
+    border:1px solid rgba(255,23,68,.25);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,23,68,.06),
+            rgba(255,255,255,.02)
+        );
+
+    padding:45px;
+
+    box-shadow:
+        0 30px 120px rgba(0,0,0,.6);
+}
+
+.resultTitle{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(45px,8vw,80px);
+
+    font-weight:300;
+
+    margin-bottom:15px;
+}
+
+.resultSubtitle{
+    color:#888;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:21px;
+
+    margin-bottom:35px;
+}
+
+.resultGrid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:1px;
+
+    background:rgba(255,23,68,.12);
+}
+
+.resultItem{
+    padding:18px;
+
+    background:#070707;
+
+    min-height:80px;
+}
+
+.resultKey{
+    display:block;
+
+    color:var(--red);
+
+    font-family:"Space Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    margin-bottom:7px;
+
+    text-transform:uppercase;
+}
+
+.resultValue{
+    color:#ddd;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:21px;
+}
+
+.resultMemory{
+    margin-top:1px;
+
+    padding:22px;
+
+    background:#070707;
+}
+
+.resultMemory p{
+    color:#aaa;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:20px;
+
+    line-height:1.5;
+
+    white-space:pre-wrap;
+}
+
+.continueButtonWrap{
+    text-align:center;
+
+    margin-top:35px;
+}
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story{
+    display:none;
+
+    min-height:auto;
+}
+
+.story.unlocked{
+    display:flex;
+
+    animation:fadeIn 1s ease both;
+}
+
+.storyIntro{
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,23,68,.10),
+            transparent 42%
+        );
+}
+
+.storyHeading{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(50px,10vw,100px);
+
+    font-weight:300;
+
+    line-height:.9;
+
+    margin-bottom:30px;
+}
+
+.storyHeading span{
+    color:var(--red);
+}
+
+.storyLead{
+    max-width:650px;
+
+    margin:auto;
+
+    font-family:"Cormorant Garamond",serif;
+
+    color:#999;
+
+    font-size:24px;
+
+    line-height:1.55;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+    background:#030303;
+}
+
+.aboutGrid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:15px;
+
+    margin-top:40px;
+}
+
+.aboutCard{
+    border:1px solid rgba(255,23,68,.13);
+
+    padding:30px;
+
+    background:
+        rgba(255,255,255,.02);
+}
+
+.aboutCardNumber{
+    color:var(--red);
+
+    font-family:"Space Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    margin-bottom:20px;
+}
+
+.aboutCard h3{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:31px;
+
+    font-weight:400;
+
+    margin-bottom:12px;
+}
+
+.aboutCard p{
+    color:#888;
+
+    line-height:1.7;
+
+    font-size:13px;
+}
+
+/* =========================================================
+   QUESTIONS
+========================================================= */
+
+.questions{
+    background:
+        linear-gradient(
+            to bottom,
+            #030303,
+            #060606
+        );
+}
+
+.questionList{
+    margin-top:45px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.questionLine{
+    border-left:2px solid var(--red);
+
+    padding:20px 25px;
+
+    background:rgba(255,255,255,.025);
+
+    color:#bbb;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:24px;
+}
+
+/* =========================================================
+   SCENES
+========================================================= */
+
+.scene{
+    overflow:hidden;
+}
+
+.sceneOne{
+    background:
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(255,0,40,.10),
+            transparent 30%
+        );
+}
+
+.sceneTwo{
+    background:
+        radial-gradient(
+            circle at 20% 60%,
+            rgba(255,0,40,.08),
+            transparent 30%
+        );
+}
+
+.sceneThree{
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255,0,40,.07),
+            transparent 35%
+        );
+}
+
+.sceneText{
+    max-width:720px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(35px,7vw,65px);
+
+    line-height:1.08;
+
+    font-weight:300;
+}
+
+.sceneText em{
+    color:var(--red);
+
+    font-style:normal;
+}
+
+.sceneSmall{
+    color:#666;
+
+    font-family:"Space Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    margin-bottom:25px;
+}
+
+/* =========================================================
+   PROBLEMS
+========================================================= */
+
+.problems{
+    min-height:auto;
+
+    padding-top:120px;
+
+    padding-bottom:120px;
+}
+
+.problemBox{
+    border:1px solid rgba(255,23,68,.14);
+
+    padding:35px;
+
+    background:#050505;
+}
+
+.problem{
+    padding:17px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    color:#999;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:22px;
+}
+
+.problem:last-child{
+    border-bottom:none;
+}
+
+.problem span:last-child{
+    color:var(--red);
+
+    font-family:"Space Mono",monospace;
+
+    font-size:10px;
+
+    white-space:nowrap;
+}
+
+/* =========================================================
+   NOTICE
+========================================================= */
+
+.notice{
+    min-height:auto;
+
+    padding-top:80px;
+
+    padding-bottom:80px;
+}
+
+.noticeGrid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:12px;
+
+    margin-top:40px;
+}
+
+.noticeCard{
+    padding:25px;
+
+    border:1px solid rgba(255,23,68,.12);
+
+    background:#050505;
+}
+
+.noticeCard .icon{
+    color:var(--red);
+
+    font-size:25px;
+
+    margin-bottom:15px;
+}
+
+.noticeCard p{
+    color:#888;
+
+    line-height:1.6;
+
+    font-size:12px;
+}
+
+/* =========================================================
+   QUIET
+========================================================= */
+
+.quiet{
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.025),
+            transparent 35%
+        );
+}
+
+.quietText{
+    max-width:700px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(36px,7vw,70px);
+
+    line-height:1.1;
+
+    font-weight:300;
+}
+
+.quietText small{
+    display:block;
+
+    margin-top:35px;
+
+    color:#666;
+
+    font-family:"Space Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    line-height:1.8;
+}
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+.letter{
+    min-height:auto;
+
+    padding-top:130px;
+
+    padding-bottom:130px;
+}
+
+.letterPaper{
+    width:min(720px,100%);
+
+    padding:
+        clamp(30px,7vw,65px);
+
+    border:1px solid rgba(255,23,68,.13);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        );
+
+    box-shadow:
+        0 40px 120px rgba(0,0,0,.5);
+}
+
+.letterTop{
+    font-family:"Space Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    color:var(--red);
+
+    margin-bottom:45px;
+}
+
+.letterPaper h2{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(42px,8vw,65px);
+
+    font-weight:300;
+
+    margin-bottom:35px;
+}
+
+.letterPaper p{
+    font-family:"Cormorant Garamond",serif;
+
+    color:#aaa;
+
+    font-size:22px;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+}
+
+.signature{
+    margin-top:45px;
+
+    color:#ddd;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:28px;
+}
+
+/* =========================================================
+   UNTIL THEN
+========================================================= */
+
+.until{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,23,68,.08),
+            transparent 40%
+        );
+}
+
+.untilContent{
+    text-align:center;
+
+    max-width:800px;
+}
+
+.untilTitle{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(55px,11vw,110px);
+
+    font-weight:300;
+
+    line-height:.9;
+
+    margin-bottom:35px;
+}
+
+.untilTitle span{
+    color:var(--red);
+}
+
+.untilText{
+    color:#999;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:24px;
+
+    line-height:1.6;
+}
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final{
+    min-height:120vh;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,0,40,.13),
+            transparent 40%
+        );
+
+    text-align:center;
+
+    overflow:hidden;
+}
+
+.final::before{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,23,68,.08);
+
+    animation:pulseRing 5s ease-in-out infinite;
+}
+
+.final::after{
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,23,68,.035);
+
+    animation:pulseRing 7s ease-in-out infinite reverse;
+}
+
+@keyframes pulseRing{
+
+    0%,100%{
+        transform:scale(.8);
+        opacity:.2;
+    }
+
+    50%{
+        transform:scale(1.15);
+        opacity:.7;
+    }
+
+}
+
+.finalContent{
+    position:relative;
+
+    z-index:2;
+
+    width:min(850px,100%);
+}
+
+.finalTiny{
+    color:var(--red);
+
+    font-family:"Space Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+
+    margin-bottom:35px;
+}
+
+.finalTitle{
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(55px,12vw,125px);
+
+    font-weight:300;
+
+    line-height:.85;
+
+    letter-spacing:-3px;
+
+    margin-bottom:45px;
+}
+
+.finalTitle span{
+    color:var(--red);
+}
+
+.finalParagraph{
+    max-width:700px;
+
+    margin:0 auto;
+
+    color:#aaa;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:
+        clamp(22px,4vw,29px);
+
+    line-height:1.65;
+}
+
+.finalParagraph strong{
+    color:#eee;
+
+    font-weight:500;
+}
+
+.finalDivider{
+    width:70px;
+
+    height:1px;
+
+    background:var(--red);
+
+    margin:45px auto;
+
+    box-shadow:
+        0 0 15px var(--red);
+}
+
+.finalLast{
+    max-width:650px;
+
+    margin:auto;
+
+    color:#777;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:21px;
+
+    line-height:1.7;
+}
+
+.heartFinal{
+    margin-top:55px;
+
+    font-size:45px;
+
+    color:var(--red);
+
+    text-shadow:
+        0 0 30px rgba(255,23,68,.7);
+
+    animation:heartBeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartBeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    15%{
+        transform:scale(1.18);
+    }
+
+    30%{
+        transform:scale(1);
+    }
+
+    45%{
+        transform:scale(1.12);
+    }
+
+    60%{
+        transform:scale(1);
+    }
+
+}
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+.heart{
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:8999;
+
+    color:var(--red);
+
+    font-size:16px;
+
+    animation:heartFloat linear forwards;
+
+    text-shadow:
+        0 0 15px rgba(255,23,68,.7);
+}
+
+@keyframes heartFloat{
+
+    from{
+        transform:
+            translateY(0)
+            scale(.7)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    to{
+        transform:
+            translateY(-100vh)
+            scale(1.5)
+            rotate(25deg);
+
+        opacity:0;
+    }
+
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:700px){
+
+    section{
+        padding:
+            70px 18px;
+    }
+
+    .heroTitle{
+        letter-spacing:-2px;
+    }
+
+    .questionCard{
+        padding:40px 20px;
+    }
+
+    .optionGrid{
+        grid-template-columns:1fr;
+    }
+
+    .step{
+        padding:
+            35px 20px;
+    }
+
+    .plannerHeader{
+        padding:20px;
+    }
+
+    .resultCard{
+        padding:25px 18px;
+    }
+
+    .resultGrid{
+        grid-template-columns:1fr;
+    }
+
+    .aboutGrid{
+        grid-template-columns:1fr;
+    }
+
+    .noticeGrid{
+        grid-template-columns:1fr;
+    }
+
+    .problem{
+        flex-direction:column;
+
+        gap:7px;
+    }
+
+    .problem span:last-child{
+        white-space:normal;
+    }
+
+    .letterPaper{
+        padding:30px 22px;
+    }
+
+    .letterPaper p{
+        font-size:20px;
+    }
+
+    .musicBar{
+        bottom:
+            calc(14px + env(safe-area-inset-bottom));
+    }
+
+}
+
+@media(max-width:420px){
+
+    .choiceRow{
+        flex-direction:column;
+    }
+
+    .choiceRow .btn{
+        width:100%;
+    }
+
+    .plannerButtons{
+        flex-direction:column-reverse;
+    }
+
+    .plannerButtons .btn{
+        width:100%;
+    }
+
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection{
+    background:var(--red);
+
+    color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="scrollProgress"></div>
+
+<!-- =======================================================
+     MUSIC
+======================================================= -->
+
+<iframe
+    id="musicFrame"
+    title="Music"
+    allow="autoplay; encrypted-media"
+    style="
+        position:fixed;
+        width:1px;
+        height:1px;
+        left:-10px;
+        bottom:-10px;
+        opacity:.01;
+        pointer-events:none;
+        border:0;
+    ">
+</iframe>
+
+<div class="musicBar" id="musicBar">
+
+    <div class="musicInfo">
+
+        <div class="musicLabel">
+            NOW PLAYING
+        </div>
+
+        <div class="musicSong">
+            I Wanna Be Yours — Arctic Monkeys
+        </div>
+
+    </div>
+
+    <button
+        class="musicToggle"
+        id="musicToggle"
+        type="button"
+        onclick="toggleMusic()">
+
+        PAUSE
+
+    </button>
+
+</div>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section class="hero" id="hero">
+
+    <div class="rain" id="rainHero"></div>
+
+    <div class="heroContent">
+
+        <div class="eyebrow">
+            AVIYAN // A LITTLE SOMETHING
+        </div>
+
+        <h1 class="heroTitle">
+            It’s<br>
+            <span>raining.</span>
+        </h1>
+
+        <p class="heroSubtitle">
+            And somehow, in the middle of all this noise,
+            I found myself thinking about one very simple thing...
+            <br><br>
+            <strong>you.</strong>
+        </p>
+
+        <button
+            class="playButton"
+            id="playButton"
+            type="button"
+            onclick="startExperience()">
+
+            ▶ PLAY THIS FOR ME
+
+        </button>
+
+        <div
+            class="musicStatus"
+            id="musicStatus">
+
+            Tap once. Let the night begin.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     INTRO
+======================================================= -->
+
+<section class="intro">
+
+    <div class="container center">
+
+        <div class="sectionNumber">
+            01 // LISTEN
+        </div>
+
+        <h2 class="bigText">
+            Listen to the rain<br>
+            for a second.
+        </h2>
+
+        <p class="description">
+            There is something beautiful about rain.
+            It makes the world slow down.
+            Cars become distant.
+            Conversations become softer.
+            And sometimes you suddenly realize
+            who you actually want beside you.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     DATE QUESTION
+======================================================= -->
+
+<section class="questionSection" id="dateQuestion">
+
+    <div class="questionCard">
+
+        <div class="sectionNumber">
+            02 // THE QUESTION
+        </div>
+
+        <h2 class="question">
+            Would you let me<br>
+            take you on a date?
+        </h2>
+
+        <p class="questionSmall">
+            No pressure. Just one honest answer.
+        </p>
+
+        <div class="choiceRow">
+
+            <button
+                class="btn primary"
+                type="button"
+                onclick="sayYes()">
+
+                YES ❤️
+
+            </button>
+
+            <button
+                class="btn noBtn"
+                type="button"
+                onclick="declineDate()">
+
+                NO
+
+            </button>
+
+        </div>
+
+        <div id="noMessage"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     YES INTRO
+======================================================= -->
+
+<section
+    class="yesIntro hidden"
+    id="yesIntro">
+
+    <div class="container center">
+
+        <div class="sectionNumber">
+            03 // YOU SAID YES
+        </div>
+
+        <h2 class="yesTitle">
+            Then let’s make<br>
+            <span>one ordinary day</span><br>
+            ours.
+        </h2>
+
+        <p class="yesText">
+            You don't have to plan everything.
+            You don't have to make it perfect.
+            Just choose the little things that sound like you.
+            I'll take care of the rest.
+        </p>
+
+        <button
+            class="btn primary"
+            type="button"
+            onclick="openPlanner()">
+
+            LET'S PLAN OUR DATE →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     PLANNER
+======================================================= -->
+
+<section
+    class="plannerSection hidden"
+    id="plannerSection">
+
+    <div class="planner">
+
+        <div class="plannerHeader">
+
+            <div class="plannerHeaderTitle">
+                OUR LITTLE DATE // PLANNER
+            </div>
+
+            <div
+                class="stepCounter"
+                id="stepCounter">
+
+                01 / 10
+
+            </div>
+
+        </div>
+
+        <div class="progressTrack">
+
+            <div
+                class="progressFill"
+                id="progressFill">
+            </div>
+
+        </div>
+
+
+        <!-- STEP 1 -->
+
+        <div class="step active" data-step="1">
+
+            <div class="stepNumber">
+                01 // WHEN
+            </div>
+
+            <h3 class="stepTitle">
+                Pick the day.
+            </h3>
+
+            <p class="stepHint">
+                Give us a date worth remembering.
+            </p>
+
+            <label class="fieldLabel">
+                Date
+            </label>
+
+            <input
+                type="date"
+                id="dateInput">
+
+            <div class="plannerButtons">
+
+                <span></span>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="nextStep()">
+
+                    NEXT →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 2 -->
+
+        <div class="step" data-step="2">
+
+            <div class="stepNumber">
+                02 // TIME
+            </div>
+
+            <h3 class="stepTitle">
+                What time?
+            </h3>
+
+            <p class="stepHint">
+                Morning coffee, golden evening,
+                or a night that somehow lasts too long.
+            </p>
+
+            <label class="fieldLabel">
+                Time
+            </label>
+
+            <input
+                type="time"
+                id="timeInput">
+
+            <div class="plannerButtons">
+
+                <button
+                    class="btn"
+                    type="button"
+                    onclick="previousStep()">
+
+                    ← BACK
+
+                </button>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="nextStep()">
+
+                    NEXT →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 3 -->
+
+        <div class="step" data-step="3">
+
+            <div class="stepNumber">
+                03 // PLACE
+            </div>
+
+            <h3 class="stepTitle">
+                Where should we go?
+            </h3>
+
+            <p class="stepHint">
+                Somewhere comfortable enough
+                that we forget to check the time.
+            </p>
+
+            <div class="optionGrid">
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'place','Cozy café')">
+
+                    <span class="optionTitle">
+                        ☕ COZY CAFÉ
+                    </span>
+
+                    <span class="optionDesc">
+                        Coffee, warm lights and talking.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'place','Somewhere quiet')">
+
+                    <span class="optionTitle">
+                        🌙 SOMEWHERE QUIET
+                    </span>
+
+                    <span class="optionDesc">
+                        Away from everything.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'place','City lights')">
+
+                    <span class="optionTitle">
+                        ✨ CITY LIGHTS
+                    </span>
+
+                    <span class="optionDesc">
+                        Walking beneath the night.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'place','You choose')">
+
+                    <span class="optionTitle">
+                        ❤️ YOU CHOOSE
+                    </span>
+
+                    <span class="optionDesc">
+                        I trust your choice.
+                    </span>
+
+                </button>
+
+            </div>
+
+            <div class="plannerButtons">
+
+                <button
+                    class="btn"
+                    type="button"
+                    onclick="previousStep()">
+
+                    ← BACK
+
+                </button>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="nextStep()">
+
+                    NEXT →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 4 -->
+
+        <div class="step" data-step="4">
+
+            <div class="stepNumber">
+                04 // MOOD
+            </div>
+
+            <h3 class="stepTitle">
+                What should it feel like?
+            </h3>
+
+            <p class="stepHint">
+                Choose the atmosphere.
+                I'll remember the rest.
+            </p>
+
+            <div class="optionGrid">
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'mood','Rain + coffee')">
+
+                    <span class="optionTitle">
+                        🌧 RAIN + COFFEE
+                    </span>
+
+                    <span class="optionDesc">
+                        Soft weather and warmer conversations.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'mood','City lights')">
+
+                    <span class="optionTitle">
+                        🌃 CITY LIGHTS
+                    </span>
+
+                    <span class="optionDesc">
+                        A little cinematic.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'mood','Peaceful and quiet')">
+
+                    <span class="optionTitle">
+                        🌙 PEACEFUL
+                    </span>
+
+                    <span class="optionDesc">
+                        No rush. No noise.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'mood','Whatever feels natural')">
+
+                    <span class="optionTitle">
+                        ❤️ NATURAL
+                    </span>
+
+                    <span class="optionDesc">
+                        No script. Just us.
+                    </span>
+
+                </button>
+
+            </div>
+
+            <div class="plannerButtons">
+
+                <button
+                    class="btn"
+                    type="button"
+                    onclick="previousStep()">
+
+                    ← BACK
+
+                </button>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="nextStep()">
+
+                    NEXT →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 5 -->
+
+        <div class="step" data-step="5">
+
+            <div class="stepNumber">
+                05 // FOOD
+            </div>
+
+            <h3 class="stepTitle">
+                What are we eating?
+            </h3>
+
+            <p class="stepHint">
+                Because every good love story needs snacks.
+            </p>
+
+            <div class="optionGrid">
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'food','Coffee + dessert')">
+
+                    <span class="optionTitle">
+                        ☕ + 🍰
+                    </span>
+
+                    <span class="optionDesc">
+                        Coffee and something sweet.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'food','Dinner')">
+
+                    <span class="optionTitle">
+                        🍽 DINNER
+                    </span>
+
+                    <span class="optionDesc">
+                        A proper little date.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'food','Pizza')">
+
+                    <span class="optionTitle">
+                        🍕 PIZZA
+                    </span>
+
+                    <span class="optionDesc">
+                        Because pizza rarely disappoints.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'food','Something new')">
+
+                    <span class="optionTitle">
+                        ✨ SOMETHING NEW
+                    </span>
+
+                    <span class="optionDesc">
+                        Let's discover it together.
+                    </span>
+
+                </button>
+
+            </div>
+
+            <div class="plannerButtons">
+
+                <button
+                    class="btn"
+                    type="button"
+                    onclick="previousStep()">
+
+                    ← BACK
+
+                </button>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="nextStep()">
+
+                    NEXT →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 6 -->
+
+        <div class="step" data-step="6">
+
+            <div class="stepNumber">
+                06 // THINGS TO DO
+            </div>
+
+            <h3 class="stepTitle">
+                What should we do?
+            </h3>
+
+            <p class="stepHint">
+                Choose as many as you want.
+                There is no correct answer.
+            </p>
+
+            <div class="optionGrid">
+
+                <button
+                    class="option multiOption"
+                    type="button"
+                    onclick="toggleMulti(this,'Walk & explore')">
+
+                    <span class="optionTitle">
+                        🚶 WALK & EXPLORE
+                    </span>
+
+                    <span class="optionDesc">
+                        Let's see where the road takes us.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option multiOption"
+                    type="button"
+                    onclick="toggleMulti(this,'Just talk')">
+
+                    <span class="optionTitle">
+                        💬 JUST TALK
+                    </span>
+
+                    <span class="optionDesc">
+                        The conversations that last hours.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option multiOption"
+                    type="button"
+                    onclick="toggleMulti(this,'Take silly photos')">
+
+                    <span class="optionTitle">
+                        📸 SILLY PHOTOS
+                    </span>
+
+                    <span class="optionDesc">
+                        Evidence that we actually had fun.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option multiOption"
+                    type="button"
+                    onclick="toggleMulti(this,'Watch something')">
+
+                    <span class="optionTitle">
+                        🎬 WATCH SOMETHING
+                    </span>
+
+                    <span class="optionDesc">
+                        Something we can talk about afterwards.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option multiOption"
+                    type="button"
+                    onclick="toggleMulti(this,'Get lost somewhere')">
+
+                    <span class="optionTitle">
+                        🗺 GET LOST
+                    </span>
+
+                    <span class="optionDesc">
+                        The good kind of lost.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option multiOption"
+                    type="button"
+                    onclick="toggleMulti(this,'A little bit of everything')">
+
+                    <span class="optionTitle">
+                        ❤️ EVERYTHING
+                    </span>
+
+                    <span class="optionDesc">
+                        Why choose only one?
+                    </span>
+
+                </button>
+
+            </div>
+
+            <div class="plannerButtons">
+
+                <button
+                    class="btn"
+                    type="button"
+                    onclick="previousStep()">
+
+                    ← BACK
+
+                </button>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="nextStep()">
+
+                    NEXT →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 7 -->
+
+        <div class="step" data-step="7">
+
+            <div class="stepNumber">
+                07 // SOUNDTRACK
+            </div>
+
+            <h3 class="stepTitle">
+                What should play?
+            </h3>
+
+            <p class="stepHint">
+                Maybe music.
+                Maybe just our voices.
+                Maybe whatever happens naturally.
+            </p>
+
+            <div class="optionGrid">
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'music','Romantic')">
+
+                    <span class="optionTitle">
+                        ❤️ ROMANTIC
+                    </span>
+
+                    <span class="optionDesc">
+                        Something that stays in our heads.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'music','Chill')">
+
+                    <span class="optionTitle">
+                        🌙 CHILL
+                    </span>
+
+                    <span class="optionDesc">
+                        Soft and easy.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'music','Your playlist')">
+
+                    <span class="optionTitle">
+                        🎧 YOUR PLAYLIST
+                    </span>
+
+                    <span class="optionDesc">
+                        You control the soundtrack.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'music','No music')">
+
+                    <span class="optionTitle">
+                        🤍 NO MUSIC
+                    </span>
+
+                    <span class="optionDesc">
+                        Just conversation.
+                    </span>
+
+                </button>
+
+            </div>
+
+            <div class="plannerButtons">
+
+                <button
+                    class="btn"
+                    type="button"
+                    onclick="previousStep()">
+
+                    ← BACK
+
+                </button>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="nextStep()">
+
+                    NEXT →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 8 -->
+
+        <div class="step" data-step="8">
+
+            <div class="stepNumber">
+                08 // OUTFIT
+            </div>
+
+            <h3 class="stepTitle">
+                What are you wearing?
+            </h3>
+
+            <p class="stepHint">
+                Completely your choice.
+                I already know you'll look beautiful.
+            </p>
+
+            <div class="optionGrid">
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'outfit','Casual')">
+
+                    <span class="optionTitle">
+                        🤍 CASUAL
+                    </span>
+
+                    <span class="optionDesc">
+                        Comfortable and completely you.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'outfit','Smart')">
+
+                    <span class="optionTitle">
+                        ✨ SMART
+                    </span>
+
+                    <span class="optionDesc">
+                        A little dressed up.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'outfit','All black')">
+
+                    <span class="optionTitle">
+                        🖤 ALL BLACK
+                    </span>
+
+                    <span class="optionDesc">
+                        Dangerous choice.
+                    </span>
+
+                </button>
+
+                <button
+                    class="option"
+                    type="button"
+                    onclick="selectOption(this,'outfit','Surprise me')">
+
+                    <span class="optionTitle">
+                        ❤️ SURPRISE ME
+                    </span>
+
+                    <span class="optionDesc">
+                        I'll wait and see.
+                    </span>
+
+                </button>
+
+            </div>
+
+            <div class="plannerButtons">
+
+                <button
+                    class="btn"
+                    type="button"
+                    onclick="previousStep()">
+
+                    ← BACK
+
+                </button>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="nextStep()">
+
+                    NEXT →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 9 -->
+
+        <div class="step" data-step="9">
+
+            <div class="stepNumber">
+                09 // REMEMBER
+            </div>
+
+            <h3 class="stepTitle">
+                Something you want me to remember.
+            </h3>
+
+            <p class="stepHint">
+                A little detail.
+                A favorite thing.
+                Something that would make the day feel more like you.
+            </p>
+
+            <textarea
+                id="memoryInput"
+                placeholder="Tell me something you want me to remember..."></textarea>
+
+            <div class="plannerButtons">
+
+                <button
+                    class="btn"
+                    type="button"
+                    onclick="previousStep()">
+
+                    ← BACK
+
+                </button>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="nextStep()">
+
+                    NEXT →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STEP 10 -->
+
+        <div class="step" data-step="10">
+
+            <div class="stepNumber">
+                10 // SECRET
+            </div>
+
+            <h3 class="stepTitle">
+                One secret.
+            </h3>
+
+            <p class="stepHint">
+                Something you don't have to say out loud.
+                Leave it here.
+            </p>
+
+            <textarea
+                id="secretInput"
+                placeholder="Only for this little date plan..."></textarea>
+
+            <div class="plannerButtons">
+
+                <button
+                    class="btn"
+                    type="button"
+                    onclick="previousStep()">
+
+                    ← BACK
+
+                </button>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="finishDate()">
+
+                    CREATE OUR DATE ❤️
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     RESULT
+======================================================= -->
+
+<section
+    class="resultSection hidden"
+    id="resultSection">
+
+    <div class="container">
+
+        <div class="resultCard">
+
+            <div class="sectionNumber">
+                04 // DATE CONFIRMED
+            </div>
+
+            <h2 class="resultTitle">
+                It's a plan.
+            </h2>
+
+            <p class="resultSubtitle">
+                Not just a date on a calendar anymore.
+                It's something we can look forward to.
+            </p>
+
+            <div class="resultGrid">
+
+                <div class="resultItem">
+
+                    <span class="resultKey">
+                        DATE
+                    </span>
+
+                    <span
+                        class="resultValue"
+                        id="resultDate">
+                    </span>
+
+                </div>
+
+                <div class="resultItem">
+
+                    <span class="resultKey">
+                        TIME
+                    </span>
+
+                    <span
+                        class="resultValue"
+                        id="resultTime">
+                    </span>
+
+                </div>
+
+                <div class="resultItem">
+
+                    <span class="resultKey">
+                        PLACE
+                    </span>
+
+                    <span
+                        class="resultValue"
+                        id="resultPlace">
+                    </span>
+
+                </div>
+
+                <div class="resultItem">
+
+                    <span class="resultKey">
+                        MOOD
+                    </span>
+
+                    <span
+                        class="resultValue"
+                        id="resultMood">
+                    </span>
+
+                </div>
+
+                <div class="resultItem">
+
+                    <span class="resultKey">
+                        FOOD
+                    </span>
+
+                    <span
+                        class="resultValue"
+                        id="resultFood">
+                    </span>
+
+                </div>
+
+                <div class="resultItem">
+
+                    <span class="resultKey">
+                        MUSIC
+                    </span>
+
+                    <span
+                        class="resultValue"
+                        id="resultMusic">
+                    </span>
+
+                </div>
+
+                <div class="resultItem">
+
+                    <span class="resultKey">
+                        OUTFIT
+                    </span>
+
+                    <span
+                        class="resultValue"
+                        id="resultOutfit">
+                    </span>
+
+                </div>
+
+                <div class="resultItem">
+
+                    <span class="resultKey">
+                        PLANS
+                    </span>
+
+                    <span
+                        class="resultValue"
+                        id="resultActivities">
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="resultMemory">
+
+                <span class="resultKey">
+                    YOU ASKED ME TO REMEMBER
+                </span>
+
+                <p id="resultMemory"></p>
+
+            </div>
+
+            <div class="resultMemory">
+
+                <span class="resultKey">
+                    THE SECRET
+                </span>
+
+                <p id="resultSecret"></p>
+
+            </div>
+
+            <div class="continueButtonWrap">
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="unlockStory()">
+
+                    THERE'S MORE ❤️ →
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     STORY INTRO
+======================================================= -->
+
+<section
+    class="story storyIntro"
+    id="storyIntro">
+
+    <div class="container center">
+
+        <div class="sectionNumber">
+            05 // AFTER THE PLAN
+        </div>
+
+        <h2 class="storyHeading">
+            Now comes<br>
+            the part I<br>
+            <span>can't plan.</span>
+        </h2>
+
+        <p class="storyLead">
+            The little things that happen when two people stop
+            following a plan and simply start enjoying being
+            around each other.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section class="story about">
+
+    <div class="container">
+
+        <div class="sectionNumber">
+            06 // THE LITTLE THINGS
+        </div>
+
+        <h2 class="bigText">
+            Things I hope<br>
+            happen naturally.
+        </h2>
+
+        <div class="aboutGrid">
+
+            <div class="aboutCard">
+
+                <div class="aboutCardNumber">
+                    01
+                </div>
+
+                <h3>
+                    The first smile
+                </h3>
+
+                <p>
+                    That tiny moment when the nervousness disappears
+                    and both of us realize we can simply relax.
+                </p>
+
+            </div>
+
+            <div class="aboutCard">
+
+                <div class="aboutCardNumber">
+                    02
+                </div>
+
+                <h3>
+                    The first laugh
+                </h3>
+
+                <p>
+                    Hopefully something ridiculous happens.
+                    The kind of laugh that makes the original plan
+                    completely irrelevant.
+                </p>
+
+            </div>
+
+            <div class="aboutCard">
+
+                <div class="aboutCardNumber">
+                    03
+                </div>
+
+                <h3>
+                    The comfortable silence
+                </h3>
+
+                <p>
+                    Because sometimes the nicest conversations
+                    happen without words.
+                </p>
+
+            </div>
+
+            <div class="aboutCard">
+
+                <div class="aboutCardNumber">
+                    04
+                </div>
+
+                <h3>
+                    Losing track of time
+                </h3>
+
+                <p>
+                    Looking at the clock and realizing
+                    we somehow spent hours talking.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     QUESTIONS
+======================================================= -->
+
+<section class="story questions">
+
+    <div class="container">
+
+        <div class="sectionNumber">
+            07 // QUESTIONS
+        </div>
+
+        <h2 class="bigText">
+            Things I'd rather<br>
+            discover from you.
+        </h2>
+
+        <div class="questionList">
+
+            <div class="questionLine">
+                What makes you laugh when you're having a bad day?
+            </div>
+
+            <div class="questionLine">
+                What is something you've always wanted to do?
+            </div>
+
+            <div class="questionLine">
+                What kind of places make you feel peaceful?
+            </div>
+
+            <div class="questionLine">
+                What song could you listen to a hundred times?
+            </div>
+
+            <div class="questionLine">
+                What is one tiny thing that always makes you happy?
+            </div>
+
+            <div class="questionLine">
+                And what would make you want there to be a second date?
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     SCENE ONE
+======================================================= -->
+
+<section class="story scene sceneOne">
+
+    <div class="container">
+
+        <div class="sceneSmall">
+            SCENE 01 // ARRIVAL
+        </div>
+
+        <div class="sceneText">
+            I imagine the first few minutes will be a little awkward.
+            <br><br>
+            We'll probably both pretend we're completely calm.
+            <br><br>
+            And then you'll smile...
+            <br><br>
+            and suddenly
+            <em>everything will feel easier.</em>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     SCENE TWO
+======================================================= -->
+
+<section class="story scene sceneTwo">
+
+    <div class="container">
+
+        <div class="sceneSmall">
+            SCENE 02 // SOMEWHERE BETWEEN
+        </div>
+
+        <div class="sceneText">
+            Somewhere between the first coffee
+            and the last conversation,
+            I hope we stop thinking about
+            what a first date is supposed to look like.
+            <br><br>
+            I hope it just becomes
+            <em>our evening.</em>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     SCENE THREE
+======================================================= -->
+
+<section class="story scene sceneThree">
+
+    <div class="container">
+
+        <div class="sceneSmall">
+            SCENE 03 // THE CLOCK
+        </div>
+
+        <div class="sceneText">
+            And maybe,
+            when the night is almost over,
+            one of us will look at the clock and say...
+            <br><br>
+            <em>"Already?"</em>
+            <br><br>
+            That would be my favorite part.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     POTENTIAL PROBLEMS
+======================================================= -->
+
+<section class="story problems">
+
+    <div class="container">
+
+        <div class="sectionNumber">
+            08 // POTENTIAL PROBLEMS
+        </div>
+
+        <h2 class="bigText">
+            A few things<br>
+            could go wrong.
+        </h2>
+
+        <div class="problemBox">
+
+            <div class="problem">
+
+                <span>
+                    We might talk for too long.
+                </span>
+
+                <span>
+                    ACCEPTED
+                </span>
+
+            </div>
+
+            <div class="problem">
+
+                <span>
+                    We might laugh at something stupid.
+                </span>
+
+                <span>
+                    ACCEPTED
+                </span>
+
+            </div>
+
+            <div class="problem">
+
+                <span>
+                    We might forget to take enough photos.
+                </span>
+
+                <span>
+                    PROBABLE
+                </span>
+
+            </div>
+
+            <div class="problem">
+
+                <span>
+                    We might not want the evening to end.
+                </span>
+
+                <span>
+                    POSSIBLE
+                </span>
+
+            </div>
+
+            <div class="problem">
+
+                <span>
+                    We might accidentally create a memory.
+                </span>
+
+                <span>
+                    HIGH RISK
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     THINGS I HOPE YOU NOTICE
+======================================================= -->
+
+<section class="story notice">
+
+    <div class="container">
+
+        <div class="sectionNumber">
+            09 // DETAILS
+        </div>
+
+        <h2 class="bigText">
+            Things I hope<br>
+            you notice.
+        </h2>
+
+        <div class="noticeGrid">
+
+            <div class="noticeCard">
+
+                <div class="icon">
+                    01
+                </div>
+
+                <p>
+                    How much thought went into choosing
+                    the smallest details of this day.
+                </p>
+
+            </div>
+
+            <div class="noticeCard">
+
+                <div class="icon">
+                    02
+                </div>
+
+                <p>
+                    That I won't need anything extravagant.
+                    Your company is already enough.
+                </p>
+
+            </div>
+
+            <div class="noticeCard">
+
+                <div class="icon">
+                    03
+                </div>
+
+                <p>
+                    That if you laugh,
+                    I'll probably remember that moment
+                    much longer than anything else.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     QUIET SCENE
+======================================================= -->
+
+<section class="story quiet">
+
+    <div class="container center">
+
+        <div class="quietText">
+
+            Maybe there will be a moment
+            when neither of us says anything.
+
+            <br><br>
+
+            And somehow,
+            it won't feel awkward.
+
+            <br><br>
+
+            It will just feel
+            <span style="color:#ff1744;">
+                peaceful.
+            </span>
+
+            <small>
+                SOME MOMENTS DON'T NEED A SOUNDTRACK.
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     LETTER
+======================================================= -->
+
+<section class="story letter">
+
+    <div class="letterPaper">
+
+        <div class="letterTop">
+            PRIVATE LETTER // DO NOT RUSH
+        </div>
+
+        <h2>
+            Dear you,
+        </h2>
+
+        <p>
+            I don't know exactly what our date will look like.
+            Maybe the weather will cooperate.
+            Maybe it won't.
+            Maybe we'll follow the plan.
+            Maybe we'll forget it completely.
+        </p>
+
+        <p>
+            And honestly,
+            I think I'd be happy either way.
+        </p>
+
+        <p>
+            Because the part I'm looking forward to isn't
+            the restaurant, the coffee, the lights,
+            the music or even the place.
+        </p>
+
+        <p>
+            It's the moment when all of those things become
+            part of a memory that belongs to both of us.
+        </p>
+
+        <p>
+            I want to hear the stories you haven't told me yet.
+            I want to discover the little things that make you smile.
+            I want to know what makes you feel safe,
+            what makes you laugh,
+            what makes you dream.
+        </p>
+
+        <p>
+            I don't want to rush any of it.
+        </p>
+
+        <p>
+            I just want to sit across from you,
+            look at you,
+            and think...
+            <br><br>
+            <strong>
+                "I'm really glad we finally did this."
+            </strong>
+        </p>
+
+        <div class="signature">
+            — Aviyan ❤️
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     UNTIL THEN
+======================================================= -->
+
+<section class="story until">
+
+    <div class="untilContent">
+
+        <div class="sectionNumber">
+            10 // UNTIL THEN
+        </div>
+
+        <h2 class="untilTitle">
+            Until<br>
+            <span>then.</span>
+        </h2>
+
+        <p class="untilText">
+            Until our date becomes an actual day,
+            this little page can stay here.
+            <br><br>
+            A tiny reminder that somewhere,
+            someone is looking forward to seeing you.
+            <br><br>
+            No pressure.
+            No perfect script.
+            Just something beautiful to look forward to.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     FINAL
+======================================================= -->
+
+<section class="story final">
+
+    <div class="finalContent">
+
+        <div class="finalTiny">
+            FINAL CHAPTER // KEEP THIS MOMENT
+        </div>
+
+        <h2 class="finalTitle">
+            Maybe this<br>
+            is where<br>
+            <span>it begins.</span>
+        </h2>
+
+        <p class="finalParagraph">
+
+            Maybe one day we'll come back to this page
+            and laugh at how much thought went into
+            planning one simple date.
+
+            <br><br>
+
+            Maybe we'll remember the exact day.
+            Maybe we'll remember what we ate.
+            Maybe we'll remember the weather.
+            Maybe we'll remember what we were wearing.
+
+            <br><br>
+
+            Or maybe we'll forget all those details.
+
+            <br><br>
+
+            <strong>
+                But I hope we never forget the feeling.
+            </strong>
+
+        </p>
+
+        <div class="finalDivider"></div>
+
+        <p class="finalLast">
+
+            The feeling of one person asking,
+            and another person choosing a day.
+
+            <br><br>
+
+            The feeling of knowing that somewhere ahead
+            there is a little piece of time that belongs
+            to a memory we haven't made yet.
+
+            <br><br>
+
+            I don't know what tomorrow promises.
+
+            <br><br>
+
+            And I don't want to write our story for you.
+
+            <br><br>
+
+            I only want to be there
+            when you turn the first page.
+
+            <br><br>
+
+            You chose the day.
+
+            <br>
+
+            I'll bring the nervous smile.
+
+            <br>
+
+            I'll bring the stories.
+
+            <br>
+
+            I'll bring all the little things
+            I never knew how to say properly.
+
+            <br><br>
+
+            And if I'm lucky...
+
+            <br><br>
+
+            I'll get to watch you smile
+            when you realize this wasn't really
+            about planning a perfect date.
+
+            <br><br>
+
+            It was about creating
+            <strong>
+                our first memory.
+            </strong>
+
+        </p>
+
+        <div class="heartFinal">
+            ❤️
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================================================
+   DATE DATA
+========================================================= */
+
+const datePlan = {
+
+    date:"",
+    time:"",
+    place:"",
+    mood:"",
+    food:"",
+    activities:[],
+    music:"",
+    outfit:"",
+    memory:"",
+    secret:""
+
+};
+
+let currentStep = 1;
+
+const totalSteps = 10;
+
+let musicStarted = false;
+
+let musicPlaying = false;
+
+
+/* =========================================================
+   LOCAL DATE
+========================================================= */
+
+function getLocalDate(){
+
+    const now = new Date();
+
+    const year =
+        now.getFullYear();
+
+    const month =
+        String(now.getMonth()+1)
+        .padStart(2,"0");
+
+    const day =
+        String(now.getDate())
+        .padStart(2,"0");
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+/* =========================================================
+   SET DATE MINIMUM
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const dateInput =
+            document.getElementById("dateInput");
+
+        if(dateInput){
+
+            dateInput.min =
+                getLocalDate();
+
+        }
+
+        createRain(
+            "rainHero",
+            100
+        );
+
+        loadSavedPlan();
+
+    }
+);
+
+
+/* =========================================================
+   RAIN
+========================================================= */
+
+function createRain(id,count){
+
+    const container =
+        document.getElementById(id);
+
+    if(!container) return;
+
+    for(let i=0;i<count;i++){
+
+        const drop =
+            document.createElement("div");
+
+        drop.className="drop";
+
+        drop.style.left =
+            Math.random()*110+"%";
+
+        drop.style.animationDuration =
+            (0.7 + Math.random()*1.5)+"s";
+
+        drop.style.animationDelay =
+            (-Math.random()*3)+"s";
+
+        drop.style.opacity =
+            (0.15 + Math.random()*0.55);
+
+        drop.style.height =
+            (45 + Math.random()*90)+"px";
+
+        container.appendChild(drop);
+
+    }
+
+}
+
+
+/* =========================================================
+   START EXPERIENCE
+========================================================= */
+
+function startExperience(){
+
+    const button =
+        document.getElementById("playButton");
+
+    const status =
+        document.getElementById("musicStatus");
+
+    const frame =
+        document.getElementById("musicFrame");
+
+    if(!musicStarted){
+
+        musicStarted=true;
+
+        musicPlaying=true;
+
+        const videoID =
+            "nyuo9-OjNNg";
+
+        /*
+           YouTube is intentionally loaded only after
+           the visitor presses the button. This gives the
+           browser a user gesture to work with.
+        */
+
+        frame.src =
+            "https://www.youtube.com/embed/"
+            + videoID
+            + "?autoplay=1"
+            + "&loop=1"
+            + "&playlist="+videoID
+            + "&playsinline=1"
+            + "&controls=0"
+            + "&rel=0"
+            + "&modestbranding=1"
+            + "&enablejsapi=1";
+
+        button.innerHTML =
+            "✓ THE NIGHT HAS STARTED";
+
+        status.innerHTML =
+            "♪ I Wanna Be Yours — Arctic Monkeys";
+
+        document
+            .getElementById("musicBar")
+            .classList.add("show");
+
+        burstHearts(18);
+
+    }
+
+    document
+        .getElementById("intro")
+        ?.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    document
+        .getElementById("dateQuestion")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================================================
+   MUSIC TOGGLE
+========================================================= */
+
+function toggleMusic(){
+
+    const frame =
+        document.getElementById("musicFrame");
+
+    const button =
+        document.getElementById("musicToggle");
+
+    if(!musicStarted) return;
+
+    if(musicPlaying){
+
+        frame.contentWindow.postMessage(
+            JSON.stringify({
+                event:"command",
+                func:"pauseVideo",
+                args:[]
+            }),
+            "*"
+        );
+
+        musicPlaying=false;
+
+        button.innerText="PLAY";
+
+    }else{
+
+        frame.contentWindow.postMessage(
+            JSON.stringify({
+                event:"command",
+                func:"playVideo",
+                args:[]
+            }),
+            "*"
+        );
+
+        musicPlaying=true;
+
+        button.innerText="PAUSE";
+
+    }
+
+}
+
+
+/* =========================================================
+   NO BUTTON
+========================================================= */
+
+const noMessages = [
+
+    "That's completely okay. ❤️ Honest answers are beautiful too.",
+
+    "No worries. I won't argue with your answer. ❤️",
+
+    "Fair enough. The invitation will stay here quietly. 🌙",
+
+    "Then maybe this page simply becomes a little rainy memory. ❤️"
+
+];
+
+let noIndex=0;
+
+function declineDate(){
+
+    const message =
+        document.getElementById("noMessage");
+
+    message.innerText =
+        noMessages[
+            Math.min(
+                noIndex,
+                noMessages.length-1
+            )
+        ];
+
+    noIndex++;
+
+    burstHearts(5);
+
+}
+
+
+/* =========================================================
+   YES
+========================================================= */
+
+function sayYes(){
+
+    const yesIntro =
+        document.getElementById("yesIntro");
+
+    yesIntro.classList.remove("hidden");
+
+    yesIntro.classList.add("fadeIn");
+
+    burstHearts(20);
+
+    setTimeout(
+        function(){
+
+            yesIntro.scrollIntoView({
+                behavior:"smooth"
+            });
+
+        },
+        150
+    );
+
+}
+
+
+/* =========================================================
+   OPEN PLANNER
+========================================================= */
+
+function openPlanner(){
+
+    const planner =
+        document.getElementById("plannerSection");
+
+    planner.classList.remove("hidden");
+
+    planner.classList.add("fadeIn");
+
+    setTimeout(
+        function(){
+
+            planner.scrollIntoView({
+                behavior:"smooth"
+            });
+
+        },
+        100
+    );
+
+}
+
+
+/* =========================================================
+   SELECT OPTION
+========================================================= */
+
+function selectOption(
+    button,
+    key,
+    value
+){
+
+    const parent =
+        button.parentElement;
+
+    parent
+        .querySelectorAll(".option")
+        .forEach(
+            function(item){
+
+                item.classList.remove(
+                    "selected"
+                );
+
+            }
+        );
+
+    button.classList.add("selected");
+
+    datePlan[key]=value;
+
+    savePlan();
+
+}
+
+
+/* =========================================================
+   MULTIPLE OPTIONS
+========================================================= */
+
+function toggleMulti(
+    button,
+    value
+){
+
+    button.classList.toggle(
+        "selected"
+    );
+
+    if(
+        button.classList.contains(
+            "selected"
+        )
+    ){
+
+        if(
+            !datePlan.activities
+                .includes(value)
+        ){
+
+            datePlan.activities.push(
+                value
+            );
+
+        }
+
+    }else{
+
+        datePlan.activities =
+            datePlan.activities.filter(
+                function(item){
+
+                    return item!==value;
+
+                }
+            );
+
+    }
+
+    savePlan();
+
+}
+
+
+/* =========================================================
+   VALIDATION
+========================================================= */
+
+function validateStep(){
+
+    if(currentStep===1){
+
+        const value =
+            document.getElementById(
+                "dateInput"
+            ).value;
+
+        if(!value){
+
+            alert(
+                "Choose a date for our little adventure ❤️"
+            );
+
+            return false;
+
+        }
+
+        datePlan.date=value;
+
+    }
+
+
+    if(currentStep===2){
+
+        const value =
+            document.getElementById(
+                "timeInput"
+            ).value;
+
+        if(!value){
+
+            alert(
+                "Choose a time. I need to know when to start getting nervous. ❤️"
+            );
+
+            return false;
+
+        }
+
+        datePlan.time=value;
+
+    }
+
+
+    if(currentStep===3 &&
+       !datePlan.place){
+
+        alert(
+            "Choose somewhere for us to go ❤️"
+        );
+
+        return false;
+
+    }
+
+
+    if(currentStep===4 &&
+       !datePlan.mood){
+
+        alert(
+            "Choose the mood for our date ❤️"
+        );
+
+        return false;
+
+    }
+
+
+    if(currentStep===5 &&
+       !datePlan.food){
+
+        alert(
+            "We should probably decide what we're eating 😌"
+        );
+
+        return false;
+
+    }
+
+
+    if(currentStep===6 &&
+       datePlan.activities.length===0){
+
+        alert(
+            "Choose at least one thing for us to do ❤️"
+        );
+
+        return false;
+
+    }
+
+
+    if(currentStep===7 &&
+       !datePlan.music){
+
+        alert(
+            "Choose our soundtrack ❤️"
+        );
+
+        return false;
+
+    }
+
+
+    if(currentStep===8 &&
+       !datePlan.outfit){
+
+        alert(
+            "Choose an outfit. I promise I won't judge. ❤️"
+        );
+
+        return false;
+
+    }
+
+
+    if(currentStep===9){
+
+        datePlan.memory =
+            document.getElementById(
+                "memoryInput"
+            ).value.trim();
+
+    }
+
+
+    if(currentStep===10){
+
+        datePlan.secret =
+            document.getElementById(
+                "secretInput"
+            ).value.trim();
+
+    }
+
+
+    savePlan();
+
+    return true;
+
+}
+
+
+/* =========================================================
+   NEXT STEP
+========================================================= */
+
+function nextStep(){
+
+    if(!validateStep()) return;
+
+    if(currentStep<totalSteps){
+
+        currentStep++;
+
+        showStep();
+
+    }
+
+}
+
+
+/* =========================================================
+   PREVIOUS STEP
+========================================================= */
+
+function previousStep(){
+
+    if(currentStep>1){
+
+        currentStep--;
+
+        showStep();
+
+    }
+
+}
+
+
+/* =========================================================
+   SHOW STEP
+========================================================= */
+
+function showStep(){
+
+    document
+        .querySelectorAll(".step")
+        .forEach(
+            function(step){
+
+                step.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+    const target =
+        document.querySelector(
+            `.step[data-step="${currentStep}"]`
+        );
+
+    if(target){
+
+        target.classList.add(
+            "active"
+        );
+
+    }
+
+    document
+        .getElementById("stepCounter")
+        .innerText =
+            String(currentStep)
+            .padStart(2,"0")
+            + " / "
+            + totalSteps;
+
+    document
+        .getElementById("progressFill")
+        .style.width =
+            (
+                currentStep /
+                totalSteps *
+                100
+            )+"%";
+
+}
+
+
+/* =========================================================
+   FORMAT DATE
+========================================================= */
+
+function formatDate(value){
+
+    if(!value){
+        return "Not selected";
+    }
+
+    const parts =
+        value.split("-");
+
+    if(parts.length!==3){
+        return value;
+    }
+
+    const date =
+        new Date(
+            Number(parts[0]),
+            Number(parts[1])-1,
+            Number(parts[2])
+        );
+
+    return date.toLocaleDateString(
+        undefined,
+        {
+            weekday:"long",
+            year:"numeric",
+            month:"long",
+            day:"numeric"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   FORMAT TIME
+========================================================= */
+
+function formatTime(value){
+
+    if(!value){
+        return "Not selected";
+    }
+
+    const parts =
+        value.split(":");
+
+    if(parts.length<2){
+        return value;
+    }
+
+    let hour =
+        Number(parts[0]);
+
+    const minute =
+        parts[1];
+
+    const suffix =
+        hour>=12
+        ? "PM"
+        : "AM";
+
+    hour =
+        hour%12 || 12;
+
+    return (
+        hour
+        + ":"
+        + minute
+        + " "
+        + suffix
+    );
+
+}
+
+
+/* =========================================================
+   FINISH DATE
+========================================================= */
+
+function finishDate(){
+
+    if(!validateStep()) return;
+
+    document
+        .getElementById("resultDate")
+        .innerText =
+            formatDate(
+                datePlan.date
+            );
+
+    document
+        .getElementById("resultTime")
+        .innerText =
+            formatTime(
+                datePlan.time
+            );
+
+    document
+        .getElementById("resultPlace")
+        .innerText =
+            datePlan.place
+            || "We'll decide together";
+
+    document
+        .getElementById("resultMood")
+        .innerText =
+            datePlan.mood
+            || "Whatever feels natural";
+
+    document
+        .getElementById("resultFood")
+        .innerText =
+            datePlan.food
+            || "Something delicious";
+
+    document
+        .getElementById("resultMusic")
+        .innerText =
+            datePlan.music
+            || "We'll find the right song";
+
+    document
+        .getElementById("resultOutfit")
+        .innerText =
+            datePlan.outfit
+            || "A surprise";
+
+    document
+        .getElementById("resultActivities")
+        .innerText =
+            datePlan.activities.length
+            ? datePlan.activities.join(", ")
+            : "We'll see where the day takes us";
+
+    document
+        .getElementById("resultMemory")
+        .innerText =
+            datePlan.memory
+            || "Nothing written. We'll discover something naturally.";
+
+    document
+        .getElementById("resultSecret")
+        .innerText =
+            datePlan.secret
+            || "Some secrets are better left for the actual date.";
+
+    const result =
+        document.getElementById(
+            "resultSection"
+        );
+
+    result.classList.remove(
+        "hidden"
+    );
+
+    result.classList.add(
+        "fadeIn"
+    );
+
+    burstHearts(25);
+
+    setTimeout(
+        function(){
+
+            result.scrollIntoView({
+                behavior:"smooth"
+            });
+
+        },
+        200
+    );
+
+}
+
+
+/* =========================================================
+   UNLOCK STORY
+========================================================= */
+
+function unlockStory(){
+
+    document
+        .querySelectorAll(".story")
+        .forEach(
+            function(section){
+
+                section.classList.add(
+                    "unlocked"
+                );
+
+            }
+        );
+
+    burstHearts(35);
+
+    setTimeout(
+        function(){
+
+            document
+                .getElementById(
+                    "storyIntro"
+                )
+                .scrollIntoView({
+                    behavior:"smooth"
+                });
+
+        },
+        200
+    );
+
+}
+
+
+/* =========================================================
+   SAVE PLAN
+========================================================= */
+
+function savePlan(){
+
+    try{
+
+        localStorage.setItem(
+            "ourLittleDatePlan",
+            JSON.stringify(
+                datePlan
+            )
+        );
+
+    }catch(error){
+
+        /* Storage may be disabled.
+           The experience still works. */
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD SAVED PLAN
+========================================================= */
+
+function loadSavedPlan(){
+
+    try{
+
+        const saved =
+            localStorage.getItem(
+                "ourLittleDatePlan"
+            );
+
+        if(!saved) return;
+
+        const parsed =
+            JSON.parse(saved);
+
+        Object.assign(
+            datePlan,
+            parsed
+        );
+
+        if(
+            datePlan.date
+        ){
+
+            document
+                .getElementById(
+                    "dateInput"
+                )
+                .value =
+                    datePlan.date;
+
+        }
+
+        if(
+            datePlan.time
+        ){
+
+            document
+                .getElementById(
+                    "timeInput"
+                )
+                .value =
+                    datePlan.time;
+
+        }
+
+        if(
+            datePlan.memory
+        ){
+
+            document
+                .getElementById(
+                    "memoryInput"
+                )
+                .value =
+                    datePlan.memory;
+
+        }
+
+        if(
+            datePlan.secret
+        ){
+
+            document
+                .getElementById(
+                    "secretInput"
+                )
+                .value =
+                    datePlan.secret;
+
+        }
+
+        restoreSelectedOptions();
+
+    }catch(error){
+
+        console.log(
+            "Saved plan could not be loaded."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   RESTORE SELECTED OPTIONS
+========================================================= */
+
+function restoreSelectedOptions(){
+
+    document
+        .querySelectorAll(".option")
+        .forEach(
+            function(button){
+
+                const text =
+                    button.innerText
+                    .toLowerCase();
+
+                const values = [
+                    datePlan.place,
+                    datePlan.mood,
+                    datePlan.food,
+                    datePlan.music,
+                    datePlan.outfit
+                ];
+
+                values.forEach(
+                    function(value){
+
+                        if(
+                            value &&
+                            text.includes(
+                                value
+                                    .toLowerCase()
+                                    .split(" ")[0]
+                            )
+                        ){
+
+                            /*
+                               Do not automatically select
+                               ambiguous options.
+                            */
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   HEART BURST
+========================================================= */
+
+function burstHearts(amount){
+
+    for(
+        let i=0;
+        i<amount;
+        i++
+    ){
+
+        setTimeout(
+            function(){
+
+                createHeart();
+
+            },
+            i*70
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CREATE HEART
+========================================================= */
+
+function createHeart(){
+
+    const heart =
+        document.createElement(
+            "div"
+        );
+
+    heart.className="heart";
+
+    heart.innerText =
+        Math.random()>.25
+        ? "♥"
+        : "♡";
+
+    heart.style.left =
+        Math.random()*100+"vw";
+
+    heart.style.bottom =
+        (-20 + Math.random()*30)+"px";
+
+    heart.style.fontSize =
+        (10 + Math.random()*22)+"px";
+
+    const duration =
+        4 + Math.random()*5;
+
+    heart.style.animationDuration =
+        duration+"s";
+
+    document.body.appendChild(
+        heart
+    );
+
+    setTimeout(
+        function(){
+
+            heart.remove();
+
+        },
+        duration*1000 + 500
+    );
+
+}
+
+
+/* =========================================================
+   BACKGROUND HEARTS
+========================================================= */
+
+setInterval(
+    function(){
+
+        if(
+            Math.random()<.45
+        ){
+
+            createHeart();
+
+        }
+
+    },
+    2500
+);
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        const scrollTop =
+            window.scrollY;
+
+        const height =
+            document.documentElement
+                .scrollHeight
+            -
+            window.innerHeight;
+
+        if(height<=0) return;
+
+        const progress =
+            scrollTop /
+            height *
+            100;
+
+        document
+            .getElementById(
+                "scrollProgress"
+            )
+            .style.width =
+                progress+"%";
+
+    },
+    {
+        passive:true
+    }
+);
+
+
+/* =========================================================
+   VIBRATION
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const target =
+            event.target;
+
+        if(
+            target.matches(
+                ".btn.primary,.playButton"
+            )
+        ){
+
+            if(
+                navigator.vibrate
+            ){
+
+                navigator.vibrate(
+                    25
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD SUPPORT
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key==="Escape"
+        ){
+
+            document
+                .getElementById(
+                    "musicBar"
+                )
+                .classList.remove(
+                    "show"
+                );
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
