@@ -1,52 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
       content="width=device-width,
-      initial-scale=1,
-      maximum-scale=1,
-      user-scalable=no,
-      viewport-fit=cover">
+               initial-scale=1,
+               maximum-scale=1,
+               user-scalable=no,
+               viewport-fit=cover">
 
-<meta name="theme-color" content="#020202">
+<meta name="theme-color" content="#020000">
 
 <title>Our Little Date ❤️</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap"
-rel="stylesheet">
-
 <style>
-
-/* =========================================================
-   ROOT
-========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
 
 :root{
-    --black:#020202;
-    --black2:#070707;
-    --black3:#0d0d0d;
-
+    --bg:#020202;
     --red:#ff1744;
-    --red2:#b00020;
-    --red3:#650016;
-
-    --white:#f8f8f8;
-    --muted:#9a9a9a;
-
-    --line:rgba(255,23,68,.20);
-    --glass:rgba(255,255,255,.035);
+    --red2:#8b001f;
+    --soft:#ff6b85;
+    --white:#fff;
+    --muted:#aaa;
+    --line:rgba(255,23,68,.22);
+    --glass:rgba(255,255,255,.045);
 }
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     box-sizing:border-box;
@@ -61,110 +41,55 @@ html{
 
 body{
     background:
-        radial-gradient(
-            circle at 50% 10%,
-            rgba(255,0,40,.10),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 10% 80%,
-            rgba(255,0,40,.045),
-            transparent 30%
-        ),
+        radial-gradient(circle at 50% 15%,rgba(130,0,25,.20),transparent 35%),
+        radial-gradient(circle at 20% 80%,rgba(255,0,45,.06),transparent 30%),
         #020202;
-
-    color:var(--white);
-
+    color:white;
     font-family:Inter,sans-serif;
-
-    min-height:100vh;
-
     overflow-x:hidden;
 }
 
-/* =========================================================
-   CINEMATIC OVERLAY
-========================================================= */
-
-body::before{
+body:before{
     content:"";
-
     position:fixed;
     inset:0;
-
     pointer-events:none;
-
     z-index:9998;
-
     background:
         repeating-linear-gradient(
-            to bottom,
+            0deg,
             rgba(255,255,255,.018) 0px,
             rgba(255,255,255,.018) 1px,
             transparent 1px,
             transparent 4px
         );
-
+    mix-blend-mode:screen;
     opacity:.35;
 }
 
-body::after{
+body:after{
     content:"";
-
     position:fixed;
     inset:0;
-
     pointer-events:none;
-
     z-index:9997;
-
-    box-shadow:
-        inset 0 0 180px rgba(0,0,0,.95),
-        inset 0 0 60px rgba(255,0,40,.03);
+    box-shadow:inset 0 0 180px #000;
 }
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-#scrollProgress{
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:0%;
-    height:2px;
-
-    background:var(--red);
-
-    box-shadow:
-        0 0 12px var(--red),
-        0 0 30px rgba(255,23,68,.7);
-
-    z-index:10000;
-}
-
-/* =========================================================
-   COMMON
-========================================================= */
 
 section{
-    position:relative;
-
-    width:100%;
     min-height:100vh;
-
+    position:relative;
+    padding:90px 20px;
     display:flex;
     align-items:center;
     justify-content:center;
-
-    padding:80px 20px;
 }
 
 .container{
     width:min(900px,100%);
     margin:auto;
+    position:relative;
+    z-index:5;
 }
 
 .center{
@@ -179,2028 +104,935 @@ section{
     font-family:"Cormorant Garamond",serif;
 }
 
-/* =========================================================
-   RAIN
-========================================================= */
+.kicker{
+    font-family:"Space Mono",monospace;
+    font-size:10px;
+    letter-spacing:4px;
+    color:#ff4568;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+h1{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:400;
+    font-size:clamp(48px,12vw,105px);
+    line-height:.9;
+    letter-spacing:-2px;
+}
+
+h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(38px,8vw,72px);
+    font-weight:400;
+    line-height:1;
+    margin-bottom:24px;
+}
+
+h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:34px;
+    font-weight:400;
+}
+
+p{
+    color:#c8c8c8;
+    line-height:1.8;
+}
+
+.red{
+    color:var(--red);
+}
+
+.dim{
+    color:#777;
+}
+
+.glow{
+    text-shadow:
+        0 0 10px rgba(255,23,68,.55),
+        0 0 35px rgba(255,23,68,.25);
+}
+
+/* RAIN */
 
 .rain{
-    position:absolute;
+    position:fixed;
     inset:0;
-
-    overflow:hidden;
-
     pointer-events:none;
-
-    opacity:.30;
+    overflow:hidden;
+    z-index:1;
 }
 
 .drop{
     position:absolute;
-
-    top:-120px;
-
     width:1px;
-
-    height:90px;
-
-    background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            rgba(255,255,255,.4)
-        );
-
-    transform:rotate(12deg);
-
-    animation:rainFall linear infinite;
+    height:80px;
+    background:linear-gradient(
+        transparent,
+        rgba(255,255,255,.2)
+    );
+    animation:fall linear infinite;
 }
 
-@keyframes rainFall{
-
+@keyframes fall{
     from{
-        transform:
-            translate3d(0,-120px,0)
-            rotate(12deg);
+        transform:translateY(-120px) translateX(0);
     }
-
     to{
-        transform:
-            translate3d(-180px,120vh,0)
-            rotate(12deg);
+        transform:translateY(110vh) translateX(-80px);
     }
-
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+/* HEARTS */
+
+.heart{
+    position:fixed;
+    color:#ff1744;
+    pointer-events:none;
+    z-index:3;
+    animation:heartFloat linear forwards;
+    text-shadow:0 0 15px rgba(255,0,50,.7);
+}
+
+@keyframes heartFloat{
+    0%{
+        opacity:0;
+        transform:translateY(30px) scale(.4);
+    }
+    15%{
+        opacity:.8;
+    }
+    100%{
+        opacity:0;
+        transform:translateY(-100vh) scale(1.2) rotate(15deg);
+    }
+}
+
+/* HERO */
 
 .hero{
     overflow:hidden;
-
     background:
         radial-gradient(
-            circle at center,
-            rgba(255,0,40,.12),
-            transparent 40%
+            circle at 50% 48%,
+            rgba(255,0,45,.13),
+            transparent 32%
         );
 }
 
-.heroContent{
-    position:relative;
-    z-index:2;
-
-    width:min(800px,100%);
-
+.hero-content{
     text-align:center;
+    z-index:10;
 }
 
-.eyebrow{
-    font-family:"Space Mono",monospace;
-
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    color:var(--red);
-
-    margin-bottom:30px;
-
-    text-transform:uppercase;
-
-    opacity:.9;
+.hero-line{
+    width:90px;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--red),
+        transparent
+    );
+    margin:25px auto;
 }
 
-.heroTitle{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(60px,13vw,130px);
-
-    font-weight:300;
-
-    line-height:.82;
-
-    letter-spacing:-4px;
-
-    margin-bottom:35px;
-
-    text-shadow:
-        0 0 30px rgba(255,23,68,.18);
-}
-
-.heroTitle span{
-    color:var(--red);
-}
-
-.heroSubtitle{
+.hero-sub{
     max-width:600px;
-
-    margin:0 auto 45px;
-
-    color:#aaa;
-
+    margin:0 auto 35px;
     font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(21px,4vw,30px);
-
-    line-height:1.45;
-
-    font-weight:300;
+    font-size:25px;
+    color:#bbb;
 }
 
-.playButton{
-    border:1px solid rgba(255,23,68,.6);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,23,68,.16),
-            rgba(255,23,68,.03)
-        );
-
+.button{
+    border:1px solid rgba(255,23,68,.65);
+    background:rgba(255,23,68,.06);
     color:white;
-
-    padding:18px 32px;
-
-    min-width:230px;
-
-    border-radius:3px;
-
+    padding:16px 28px;
+    border-radius:2px;
+    cursor:pointer;
     font-family:"Space Mono",monospace;
-
     font-size:11px;
-
     letter-spacing:2px;
-
-    cursor:pointer;
-
     transition:.3s;
-
-    box-shadow:
-        0 0 20px rgba(255,23,68,.08);
-}
-
-.playButton:hover{
-    transform:translateY(-3px);
-
-    border-color:var(--red);
-
-    box-shadow:
-        0 0 30px rgba(255,23,68,.25);
-}
-
-.playButton:active{
-    transform:scale(.97);
-}
-
-.musicStatus{
-    margin-top:18px;
-
-    min-height:18px;
-
-    color:#777;
-
-    font-size:10px;
-
-    letter-spacing:1px;
-
-    font-family:"Space Mono",monospace;
-}
-
-/* =========================================================
-   MUSIC BAR
-========================================================= */
-
-.musicBar{
-    position:fixed;
-
-    left:50%;
-
-    bottom:20px;
-
-    transform:
-        translateX(-50%)
-        translateY(120px);
-
-    z-index:9000;
-
-    width:min(430px,calc(100% - 30px));
-
-    padding:10px 14px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:12px;
-
-    background:rgba(5,5,5,.88);
-
-    border:1px solid rgba(255,23,68,.25);
-
-    backdrop-filter:blur(14px);
-
-    transition:.5s;
-
-    opacity:0;
-}
-
-.musicBar.show{
-    transform:translateX(-50%) translateY(0);
-    opacity:1;
-}
-
-.musicInfo{
-    min-width:0;
-}
-
-.musicLabel{
-    color:var(--red);
-
-    font-family:"Space Mono",monospace;
-
-    font-size:8px;
-
-    letter-spacing:1px;
-}
-
-.musicSong{
-    white-space:nowrap;
-
+    position:relative;
     overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    color:#ccc;
-
-    font-size:11px;
-
-    margin-top:3px;
 }
 
-.musicToggle{
-    flex:none;
-
-    border:1px solid rgba(255,23,68,.35);
-
-    background:transparent;
-
-    color:white;
-
-    padding:8px 11px;
-
-    cursor:pointer;
-
-    font-size:10px;
-}
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-.intro{
-    background:
-        linear-gradient(
-            to bottom,
-            #020202,
-            #050505
-        );
-}
-
-.sectionNumber{
-    font-family:"Space Mono",monospace;
-
-    color:var(--red);
-
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    margin-bottom:25px;
-}
-
-.bigText{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(44px,8vw,80px);
-
-    font-weight:300;
-
-    line-height:1;
-
-    margin-bottom:30px;
-}
-
-.description{
-    max-width:650px;
-
-    margin:auto;
-
-    color:#aaa;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:24px;
-
-    line-height:1.55;
-}
-
-/* =========================================================
-   DATE QUESTION
-========================================================= */
-
-.questionSection{
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,0,40,.09),
-            transparent 45%
-        );
-}
-
-.questionCard{
-    width:min(700px,100%);
-
-    text-align:center;
-
-    padding:55px 30px;
-
-    border:
-        1px solid
-        rgba(255,23,68,.16);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
-        );
-
+.button:hover{
+    background:rgba(255,23,68,.18);
     box-shadow:
-        0 30px 100px rgba(0,0,0,.5);
-}
-
-.question{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(42px,8vw,75px);
-
-    font-weight:300;
-
-    line-height:1;
-
-    margin-bottom:20px;
-}
-
-.questionSmall{
-    color:#777;
-
-    font-size:12px;
-
-    margin-bottom:40px;
-
-    font-family:"Space Mono",monospace;
-}
-
-.choiceRow{
-    display:flex;
-
-    justify-content:center;
-
-    gap:14px;
-
-    flex-wrap:wrap;
-}
-
-.btn{
-    appearance:none;
-
-    border:1px solid rgba(255,23,68,.4);
-
-    background:#090909;
-
-    color:white;
-
-    padding:15px 28px;
-
-    min-width:120px;
-
-    cursor:pointer;
-
-    font-family:"Space Mono",monospace;
-
-    font-size:10px;
-
-    letter-spacing:1px;
-
-    transition:.3s;
-}
-
-.btn:hover{
-    border-color:var(--red);
-
-    box-shadow:
-        0 0 25px rgba(255,23,68,.15);
-
+        0 0 30px rgba(255,23,68,.2);
     transform:translateY(-2px);
 }
 
-.btn.primary{
-    background:
-        linear-gradient(
-            135deg,
-            #8d001b,
-            #ff1744
-        );
-
-    border-color:var(--red);
+.button:active{
+    transform:scale(.97);
 }
 
-.btn.noBtn{
-    background:#080808;
-
-    color:#aaa;
+.button.red-button{
+    background:#b9002e;
+    border-color:#ff1744;
 }
 
-#noMessage{
-    min-height:35px;
+.button.red-button:hover{
+    background:#e0003a;
+}
 
+.scroll-note{
     margin-top:25px;
-
-    color:#999;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:21px;
-
-    transition:.3s;
-}
-
-/* =========================================================
-   YES INTRO
-========================================================= */
-
-.hidden{
-    display:none !important;
-}
-
-.fadeIn{
-    animation:fadeIn .8s ease both;
-}
-
-@keyframes fadeIn{
-
-    from{
-        opacity:0;
-        transform:translateY(25px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-.yesIntro{
-    min-height:auto;
-
-    padding-top:40px;
-
-    padding-bottom:100px;
-}
-
-.yesTitle{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(42px,8vw,75px);
-
-    font-weight:300;
-
-    margin-bottom:20px;
-}
-
-.yesTitle span{
-    color:var(--red);
-}
-
-.yesText{
-    color:#999;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:22px;
-
-    line-height:1.6;
-
-    max-width:650px;
-
-    margin:0 auto 35px;
-}
-
-/* =========================================================
-   PLANNER
-========================================================= */
-
-.plannerSection{
-    min-height:auto;
-
-    padding-top:30px;
-
-    padding-bottom:120px;
-}
-
-.planner{
-    width:min(780px,100%);
-
-    margin:auto;
-
-    border:
-        1px solid
-        rgba(255,23,68,.15);
-
-    background:
-        rgba(255,255,255,.025);
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.55);
-}
-
-.plannerHeader{
-    padding:25px;
-
-    border-bottom:
-        1px solid
-        rgba(255,23,68,.12);
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:20px;
-}
-
-.plannerHeaderTitle{
-    font-family:"Space Mono",monospace;
-
-    color:var(--red);
-
     font-size:10px;
-
+    color:#555;
+    font-family:"Space Mono",monospace;
     letter-spacing:2px;
 }
 
-.stepCounter{
-    color:#666;
+/* MUSIC */
 
-    font-family:"Space Mono",monospace;
-
-    font-size:9px;
-}
-
-.progressTrack{
-    height:2px;
-
-    background:#151515;
-
-    width:100%;
-}
-
-.progressFill{
-    height:100%;
-
-    width:10%;
-
-    background:var(--red);
-
+.music-card{
+    width:min(650px,100%);
+    margin:45px auto 0;
+    padding:18px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,23,68,.28);
     box-shadow:
-        0 0 15px var(--red);
+        0 0 50px rgba(255,0,40,.06);
+}
 
+.music-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.music-title{
+    font-family:"Space Mono",monospace;
+    font-size:10px;
+    letter-spacing:2px;
+    color:#ff5270;
+}
+
+.music-status{
+    font-family:"Space Mono",monospace;
+    font-size:9px;
+    color:#666;
+    text-align:right;
+}
+
+.youtube-wrap{
+    width:100%;
+    aspect-ratio:16/9;
+    min-height:225px;
+    background:#000;
+    border:1px solid rgba(255,255,255,.08);
+    overflow:hidden;
+}
+
+#youtubePlayer{
+    width:100%;
+    height:100%;
+}
+
+.music-note{
+    margin-top:12px;
+    font-family:"Space Mono",monospace;
+    font-size:9px;
+    line-height:1.7;
+    color:#666;
+    text-align:center;
+}
+
+/* GLASS */
+
+.glass{
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+    padding:35px;
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.45);
+}
+
+/* QUESTION */
+
+.question{
+    text-align:center;
+}
+
+.question h2{
+    margin-bottom:35px;
+}
+
+.options{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.choice{
+    min-width:145px;
+    padding:15px 20px;
+    border:1px solid #333;
+    background:#080808;
+    color:#ccc;
+    cursor:pointer;
+    font-family:"Space Mono",monospace;
+    font-size:11px;
+    transition:.3s;
+}
+
+.choice:hover{
+    border-color:var(--red);
+    color:white;
+    box-shadow:0 0 25px rgba(255,23,68,.15);
+}
+
+.choice.selected{
+    border-color:var(--red);
+    background:rgba(255,23,68,.13);
+    color:#fff;
+    box-shadow:0 0 25px rgba(255,23,68,.18);
+}
+
+/* PLANNER */
+
+.planner{
+    width:min(850px,100%);
+}
+
+.progress{
+    height:2px;
+    background:#191919;
+    margin:0 0 45px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:var(--red);
+    box-shadow:0 0 15px var(--red);
     transition:.4s;
 }
 
 .step{
     display:none;
-
-    padding:45px 35px 40px;
+    animation:stepIn .5s ease;
 }
 
 .step.active{
     display:block;
-
-    animation:stepIn .45s ease both;
 }
 
 @keyframes stepIn{
-
     from{
         opacity:0;
-        transform:translateX(15px);
+        transform:translateY(15px);
     }
-
     to{
         opacity:1;
-        transform:translateX(0);
+        transform:none;
     }
-
 }
 
-.stepNumber{
+.step-number{
     font-family:"Space Mono",monospace;
-
-    font-size:9px;
-
-    color:var(--red);
-
+    font-size:10px;
     letter-spacing:3px;
-
-    margin-bottom:15px;
+    color:#555;
+    margin-bottom:18px;
 }
 
-.stepTitle{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(35px,7vw,55px);
-
-    font-weight:300;
-
-    line-height:1;
-
-    margin-bottom:15px;
+.step h2{
+    font-size:48px;
 }
 
-.stepHint{
-    color:#777;
-
-    font-size:12px;
-
-    line-height:1.6;
-
-    margin-bottom:30px;
-}
-
-.fieldLabel{
-    display:block;
-
-    color:#888;
-
-    font-family:"Space Mono",monospace;
-
-    font-size:9px;
-
-    letter-spacing:2px;
-
-    margin-bottom:10px;
-
-    text-transform:uppercase;
+.field{
+    margin-top:25px;
 }
 
 input,
 textarea{
     width:100%;
-
-    border:1px solid rgba(255,23,68,.18);
-
-    background:#070707;
-
+    padding:16px;
+    background:#050505;
+    border:1px solid #292929;
     color:white;
-
-    padding:15px;
-
     outline:none;
-
     font-family:Inter,sans-serif;
-
     font-size:14px;
-
+    transition:.3s;
     border-radius:0;
 }
 
 input:focus,
 textarea:focus{
-    border-color:rgba(255,23,68,.6);
-
-    box-shadow:
-        0 0 20px rgba(255,23,68,.07);
-}
-
-input[type="date"],
-input[type="time"]{
-    color-scheme:dark;
+    border-color:var(--red);
+    box-shadow:0 0 25px rgba(255,23,68,.08);
 }
 
 textarea{
-    min-height:150px;
-
+    min-height:130px;
     resize:vertical;
-
-    line-height:1.6;
 }
 
-.optionGrid{
+.grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
-
-    gap:10px;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
 }
 
-.option{
-    width:100%;
-
-    min-height:58px;
-
-    border:1px solid rgba(255,23,68,.16);
-
-    background:#070707;
-
-    color:#bbb;
-
-    cursor:pointer;
-
-    padding:15px;
-
-    text-align:left;
-
-    font-size:12px;
-
-    transition:.25s;
-}
-
-.option:hover{
-    border-color:rgba(255,23,68,.5);
-
-    color:white;
-}
-
-.option.selected{
-    border-color:var(--red);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,23,68,.15),
-            rgba(255,23,68,.03)
-        );
-
-    color:white;
-
-    box-shadow:
-        inset 0 0 20px rgba(255,23,68,.04);
-}
-
-.optionTitle{
-    display:block;
-
-    font-family:"Space Mono",monospace;
-
-    font-size:10px;
-
-    margin-bottom:4px;
-}
-
-.optionDesc{
+.multi-note{
+    font-size:11px;
     color:#666;
-
-    font-size:10px;
+    margin-top:15px;
 }
 
-.option.selected .optionDesc{
-    color:#999;
-}
-
-.plannerButtons{
+.step-buttons{
+    margin-top:30px;
     display:flex;
-
     justify-content:space-between;
-
     gap:10px;
-
-    margin-top:35px;
-
-    padding-top:25px;
-
-    border-top:1px solid rgba(255,255,255,.05);
 }
 
-/* =========================================================
-   DATE RESULT
-========================================================= */
+/* RESULT */
 
-.resultSection{
-    min-height:auto;
-
-    padding-top:50px;
-
-    padding-bottom:120px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,0,40,.08),
-            transparent 50%
-        );
+.result-card{
+    width:min(750px,100%);
 }
 
-.resultCard{
-    width:min(850px,100%);
-
-    border:1px solid rgba(255,23,68,.25);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,23,68,.06),
-            rgba(255,255,255,.02)
-        );
-
-    padding:45px;
-
-    box-shadow:
-        0 30px 120px rgba(0,0,0,.6);
+.result-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,.07);
 }
 
-.resultTitle{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(45px,8vw,80px);
-
-    font-weight:300;
-
-    margin-bottom:15px;
-}
-
-.resultSubtitle{
-    color:#888;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:21px;
-
-    margin-bottom:35px;
-}
-
-.resultGrid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
-
-    gap:1px;
-
-    background:rgba(255,23,68,.12);
-}
-
-.resultItem{
-    padding:18px;
-
-    background:#070707;
-
-    min-height:80px;
-}
-
-.resultKey{
-    display:block;
-
-    color:var(--red);
-
+.result-label{
     font-family:"Space Mono",monospace;
-
-    font-size:8px;
-
+    font-size:9px;
     letter-spacing:2px;
-
-    margin-bottom:7px;
-
+    color:#666;
     text-transform:uppercase;
 }
 
-.resultValue{
-    color:#ddd;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:21px;
+.result-value{
+    color:#eee;
+    text-align:right;
+    max-width:60%;
 }
 
-.resultMemory{
-    margin-top:1px;
-
-    padding:22px;
-
-    background:#070707;
-}
-
-.resultMemory p{
-    color:#aaa;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:20px;
-
-    line-height:1.5;
-
-    white-space:pre-wrap;
-}
-
-.continueButtonWrap{
-    text-align:center;
-
-    margin-top:35px;
-}
-
-/* =========================================================
-   STORY
-========================================================= */
+/* STORY */
 
 .story{
-    display:none;
-
-    min-height:auto;
-}
-
-.story.unlocked{
-    display:flex;
-
-    animation:fadeIn 1s ease both;
-}
-
-.storyIntro{
-    min-height:100vh;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,23,68,.10),
-            transparent 42%
-        );
-}
-
-.storyHeading{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(50px,10vw,100px);
-
-    font-weight:300;
-
-    line-height:.9;
-
-    margin-bottom:30px;
-}
-
-.storyHeading span{
-    color:var(--red);
-}
-
-.storyLead{
-    max-width:650px;
-
-    margin:auto;
-
-    font-family:"Cormorant Garamond",serif;
-
-    color:#999;
-
-    font-size:24px;
-
-    line-height:1.55;
-}
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about{
-    background:#030303;
-}
-
-.aboutGrid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,minmax(0,1fr));
-
-    gap:15px;
-
-    margin-top:40px;
-}
-
-.aboutCard{
-    border:1px solid rgba(255,23,68,.13);
-
-    padding:30px;
-
-    background:
-        rgba(255,255,255,.02);
-}
-
-.aboutCardNumber{
-    color:var(--red);
-
-    font-family:"Space Mono",monospace;
-
-    font-size:9px;
-
-    letter-spacing:3px;
-
-    margin-bottom:20px;
-}
-
-.aboutCard h3{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:31px;
-
-    font-weight:400;
-
-    margin-bottom:12px;
-}
-
-.aboutCard p{
-    color:#888;
-
-    line-height:1.7;
-
-    font-size:13px;
-}
-
-/* =========================================================
-   QUESTIONS
-========================================================= */
-
-.questions{
     background:
         linear-gradient(
-            to bottom,
-            #030303,
-            #060606
+            180deg,
+            #020202,
+            #070002,
+            #020202
         );
 }
 
-.questionList{
-    margin-top:45px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
+.story-block{
+    margin-bottom:120px;
 }
 
-.questionLine{
-    border-left:2px solid var(--red);
-
-    padding:20px 25px;
-
-    background:rgba(255,255,255,.025);
-
-    color:#bbb;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:24px;
-}
-
-/* =========================================================
-   SCENES
-========================================================= */
-
-.scene{
-    overflow:hidden;
-}
-
-.sceneOne{
-    background:
-        radial-gradient(
-            circle at 75% 30%,
-            rgba(255,0,40,.10),
-            transparent 30%
-        );
-}
-
-.sceneTwo{
-    background:
-        radial-gradient(
-            circle at 20% 60%,
-            rgba(255,0,40,.08),
-            transparent 30%
-        );
-}
-
-.sceneThree{
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(255,0,40,.07),
-            transparent 35%
-        );
-}
-
-.sceneText{
-    max-width:720px;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(35px,7vw,65px);
-
-    line-height:1.08;
-
-    font-weight:300;
-}
-
-.sceneText em{
-    color:var(--red);
-
-    font-style:normal;
-}
-
-.sceneSmall{
-    color:#666;
-
+.story-number{
     font-family:"Space Mono",monospace;
-
-    font-size:9px;
-
-    letter-spacing:2px;
-
-    margin-bottom:25px;
-}
-
-/* =========================================================
-   PROBLEMS
-========================================================= */
-
-.problems{
-    min-height:auto;
-
-    padding-top:120px;
-
-    padding-bottom:120px;
-}
-
-.problemBox{
-    border:1px solid rgba(255,23,68,.14);
-
-    padding:35px;
-
-    background:#050505;
-}
-
-.problem{
-    padding:17px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.05);
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    color:#999;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:22px;
-}
-
-.problem:last-child{
-    border-bottom:none;
-}
-
-.problem span:last-child{
-    color:var(--red);
-
-    font-family:"Space Mono",monospace;
-
+    color:#ff1744;
     font-size:10px;
-
-    white-space:nowrap;
-}
-
-/* =========================================================
-   NOTICE
-========================================================= */
-
-.notice{
-    min-height:auto;
-
-    padding-top:80px;
-
-    padding-bottom:80px;
-}
-
-.noticeGrid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,minmax(0,1fr));
-
-    gap:12px;
-
-    margin-top:40px;
-}
-
-.noticeCard{
-    padding:25px;
-
-    border:1px solid rgba(255,23,68,.12);
-
-    background:#050505;
-}
-
-.noticeCard .icon{
-    color:var(--red);
-
-    font-size:25px;
-
+    letter-spacing:3px;
     margin-bottom:15px;
 }
 
-.noticeCard p{
-    color:#888;
-
-    line-height:1.6;
-
-    font-size:12px;
-}
-
-/* =========================================================
-   QUIET
-========================================================= */
-
-.quiet{
-    min-height:100vh;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,255,255,.025),
-            transparent 35%
-        );
-}
-
-.quietText{
-    max-width:700px;
-
+.story-block p{
     font-family:"Cormorant Garamond",serif;
+    font-size:clamp(23px,4vw,32px);
+    color:#cfcfcf;
+    line-height:1.55;
+}
 
-    font-size:
-        clamp(36px,7vw,70px);
-
+.big-quote{
+    border-left:1px solid var(--red);
+    padding-left:25px;
+    margin:30px 0;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(28px,6vw,52px);
     line-height:1.1;
-
-    font-weight:300;
+    color:white;
 }
 
-.quietText small{
-    display:block;
-
-    margin-top:35px;
-
-    color:#666;
-
-    font-family:"Space Mono",monospace;
-
-    font-size:9px;
-
-    letter-spacing:2px;
-
-    line-height:1.8;
-}
-
-/* =========================================================
-   LETTER
-========================================================= */
+/* LETTER */
 
 .letter{
-    min-height:auto;
-
-    padding-top:130px;
-
-    padding-bottom:130px;
-}
-
-.letterPaper{
-    width:min(720px,100%);
-
-    padding:
-        clamp(30px,7vw,65px);
-
-    border:1px solid rgba(255,23,68,.13);
-
+    position:relative;
     background:
         linear-gradient(
             135deg,
             rgba(255,255,255,.035),
-            rgba(255,255,255,.012)
+            rgba(255,0,45,.025)
         );
-
-    box-shadow:
-        0 40px 120px rgba(0,0,0,.5);
+    border:1px solid rgba(255,23,68,.15);
+    padding:45px;
 }
 
-.letterTop{
+.letter:before{
+    content:"PRIVATE";
+    position:absolute;
+    top:15px;
+    right:18px;
     font-family:"Space Mono",monospace;
-
-    font-size:9px;
-
+    font-size:8px;
+    color:#4b4b4b;
     letter-spacing:3px;
-
-    color:var(--red);
-
-    margin-bottom:45px;
 }
 
-.letterPaper h2{
+.letter p{
     font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(42px,8vw,65px);
-
-    font-weight:300;
-
-    margin-bottom:35px;
+    font-size:25px;
+    line-height:1.65;
+    color:#d8d8d8;
+    margin-bottom:20px;
 }
 
-.letterPaper p{
+/* TERMINAL */
+
+.terminal{
+    background:#030303;
+    border:1px solid #242424;
+    box-shadow:0 0 50px rgba(255,0,45,.08);
+}
+
+.terminal-head{
+    padding:12px 15px;
+    border-bottom:1px solid #1b1b1b;
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#333;
+}
+
+.terminal-body{
+    padding:25px;
+    font-family:"Space Mono",monospace;
+    font-size:11px;
+    line-height:2;
+    color:#777;
+}
+
+.terminal-body .active-line{
+    color:#ff4568;
+}
+
+/* FINAL */
+
+.final{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,0,45,.13),
+            transparent 40%
+        );
+}
+
+.final h2{
+    font-size:clamp(45px,10vw,90px);
+}
+
+.final-message{
+    max-width:680px;
+    margin:30px auto;
     font-family:"Cormorant Garamond",serif;
-
-    color:#aaa;
-
-    font-size:22px;
-
-    line-height:1.7;
-
-    margin-bottom:25px;
+    font-size:27px;
+    line-height:1.6;
+    color:#cfcfcf;
 }
 
 .signature{
-    margin-top:45px;
-
-    color:#ddd;
-
+    margin-top:40px;
     font-family:"Cormorant Garamond",serif;
-
-    font-size:28px;
+    font-size:31px;
+    color:#ff4568;
 }
 
-/* =========================================================
-   UNTIL THEN
-========================================================= */
+/* REVEAL */
 
-.until{
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+/* DIVIDER */
+
+.divider{
+    width:100%;
+    height:1px;
     background:
-        radial-gradient(
-            circle at center,
-            rgba(255,23,68,.08),
-            transparent 40%
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,23,68,.35),
+            transparent
         );
+    margin:80px 0;
 }
 
-.untilContent{
+/* LOADING */
+
+.loader{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    background:#020202;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .8s,visibility .8s;
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-inner{
     text-align:center;
-
-    max-width:800px;
 }
 
-.untilTitle{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(55px,11vw,110px);
-
-    font-weight:300;
-
-    line-height:.9;
-
-    margin-bottom:35px;
+.loader-title{
+    font-family:"Space Mono",monospace;
+    font-size:10px;
+    letter-spacing:4px;
+    color:#777;
 }
 
-.untilTitle span{
-    color:var(--red);
-}
-
-.untilText{
-    color:#999;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:24px;
-
-    line-height:1.6;
-}
-
-/* =========================================================
-   FINAL
-========================================================= */
-
-.final{
-    min-height:120vh;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255,0,40,.13),
-            transparent 40%
-        );
-
-    text-align:center;
-
+.loader-line{
+    width:180px;
+    height:1px;
+    background:#222;
+    margin:20px auto;
+    position:relative;
     overflow:hidden;
 }
 
-.final::before{
+.loader-line:after{
     content:"";
-
     position:absolute;
-
-    width:500px;
-    height:500px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(255,23,68,.08);
-
-    animation:pulseRing 5s ease-in-out infinite;
-}
-
-.final::after{
-    content:"";
-
-    position:absolute;
-
-    width:700px;
-    height:700px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(255,23,68,.035);
-
-    animation:pulseRing 7s ease-in-out infinite reverse;
-}
-
-@keyframes pulseRing{
-
-    0%,100%{
-        transform:scale(.8);
-        opacity:.2;
-    }
-
-    50%{
-        transform:scale(1.15);
-        opacity:.7;
-    }
-
-}
-
-.finalContent{
-    position:relative;
-
-    z-index:2;
-
-    width:min(850px,100%);
-}
-
-.finalTiny{
-    color:var(--red);
-
-    font-family:"Space Mono",monospace;
-
-    font-size:9px;
-
-    letter-spacing:4px;
-
-    margin-bottom:35px;
-}
-
-.finalTitle{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(55px,12vw,125px);
-
-    font-weight:300;
-
-    line-height:.85;
-
-    letter-spacing:-3px;
-
-    margin-bottom:45px;
-}
-
-.finalTitle span{
-    color:var(--red);
-}
-
-.finalParagraph{
-    max-width:700px;
-
-    margin:0 auto;
-
-    color:#aaa;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:
-        clamp(22px,4vw,29px);
-
-    line-height:1.65;
-}
-
-.finalParagraph strong{
-    color:#eee;
-
-    font-weight:500;
-}
-
-.finalDivider{
-    width:70px;
-
-    height:1px;
-
+    left:-50%;
+    width:50%;
+    height:100%;
     background:var(--red);
-
-    margin:45px auto;
-
-    box-shadow:
-        0 0 15px var(--red);
+    animation:load 1.3s infinite;
 }
 
-.finalLast{
-    max-width:650px;
-
-    margin:auto;
-
-    color:#777;
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:21px;
-
-    line-height:1.7;
-}
-
-.heartFinal{
-    margin-top:55px;
-
-    font-size:45px;
-
-    color:var(--red);
-
-    text-shadow:
-        0 0 30px rgba(255,23,68,.7);
-
-    animation:heartBeat 1.5s ease-in-out infinite;
-}
-
-@keyframes heartBeat{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    15%{
-        transform:scale(1.18);
-    }
-
-    30%{
-        transform:scale(1);
-    }
-
-    45%{
-        transform:scale(1.12);
-    }
-
-    60%{
-        transform:scale(1);
-    }
-
-}
-
-/* =========================================================
-   FLOATING HEARTS
-========================================================= */
-
-.heart{
-    position:fixed;
-
-    pointer-events:none;
-
-    z-index:8999;
-
-    color:var(--red);
-
-    font-size:16px;
-
-    animation:heartFloat linear forwards;
-
-    text-shadow:
-        0 0 15px rgba(255,23,68,.7);
-}
-
-@keyframes heartFloat{
-
-    from{
-        transform:
-            translateY(0)
-            scale(.7)
-            rotate(0deg);
-
-        opacity:0;
-    }
-
-    15%{
-        opacity:1;
-    }
-
+@keyframes load{
     to{
-        transform:
-            translateY(-100vh)
-            scale(1.5)
-            rotate(25deg);
-
-        opacity:0;
+        left:100%;
     }
-
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/* MOBILE */
 
-@media(max-width:700px){
+@media(max-width:600px){
 
     section{
-        padding:
-            70px 18px;
+        padding:75px 17px;
     }
 
-    .heroTitle{
-        letter-spacing:-2px;
+    h1{
+        font-size:58px;
     }
 
-    .questionCard{
-        padding:40px 20px;
+    h2{
+        font-size:43px;
     }
 
-    .optionGrid{
+    .hero-sub{
+        font-size:22px;
+    }
+
+    .glass{
+        padding:24px 18px;
+    }
+
+    .grid{
         grid-template-columns:1fr;
     }
 
-    .step{
-        padding:
-            35px 20px;
+    .choice{
+        width:100%;
     }
 
-    .plannerHeader{
-        padding:20px;
-    }
-
-    .resultCard{
-        padding:25px 18px;
-    }
-
-    .resultGrid{
-        grid-template-columns:1fr;
-    }
-
-    .aboutGrid{
-        grid-template-columns:1fr;
-    }
-
-    .noticeGrid{
-        grid-template-columns:1fr;
-    }
-
-    .problem{
+    .options{
         flex-direction:column;
+    }
 
+    .result-row{
+        flex-direction:column;
         gap:7px;
     }
 
-    .problem span:last-child{
-        white-space:normal;
+    .result-value{
+        max-width:100%;
+        text-align:left;
     }
 
-    .letterPaper{
-        padding:30px 22px;
+    .letter{
+        padding:30px 20px;
     }
 
-    .letterPaper p{
-        font-size:20px;
+    .letter p{
+        font-size:23px;
     }
 
-    .musicBar{
-        bottom:
-            calc(14px + env(safe-area-inset-bottom));
+    .story-block p{
+        font-size:25px;
     }
 
-}
-
-@media(max-width:420px){
-
-    .choiceRow{
-        flex-direction:column;
+    .youtube-wrap{
+        min-height:225px;
     }
 
-    .choiceRow .btn{
-        width:100%;
-    }
-
-    .plannerButtons{
+    .step-buttons{
         flex-direction:column-reverse;
     }
 
-    .plannerButtons .btn{
+    .step-buttons .button{
         width:100%;
     }
-
 }
-
-/* =========================================================
-   SELECTION
-========================================================= */
-
-::selection{
-    background:var(--red);
-
-    color:white;
-}
-
 </style>
-
 </head>
 
 <body>
 
-<div id="scrollProgress"></div>
+<!-- LOADER -->
 
-<!-- =======================================================
-     MUSIC
-======================================================= -->
-
-<iframe
-    id="musicFrame"
-    title="Music"
-    allow="autoplay; encrypted-media"
-    style="
-        position:fixed;
-        width:1px;
-        height:1px;
-        left:-10px;
-        bottom:-10px;
-        opacity:.01;
-        pointer-events:none;
-        border:0;
-    ">
-</iframe>
-
-<div class="musicBar" id="musicBar">
-
-    <div class="musicInfo">
-
-        <div class="musicLabel">
-            NOW PLAYING
+<div class="loader" id="loader">
+    <div class="loader-inner">
+        <div class="loader-title">
+            LOADING SOMETHING I MEANT
         </div>
-
-        <div class="musicSong">
-            I Wanna Be Yours — Arctic Monkeys
+        <div class="loader-line"></div>
+        <div class="loader-title">
+            FOR YOU
         </div>
-
     </div>
-
-    <button
-        class="musicToggle"
-        id="musicToggle"
-        type="button"
-        onclick="toggleMusic()">
-
-        PAUSE
-
-    </button>
-
 </div>
 
+<!-- RAIN -->
 
-<!-- =======================================================
-     HERO
-======================================================= -->
+<div class="rain" id="rain"></div>
 
-<section class="hero" id="hero">
+<!-- HERO -->
 
-    <div class="rain" id="rainHero"></div>
+<section class="hero" id="home">
 
-    <div class="heroContent">
+    <div class="container hero-content">
 
-        <div class="eyebrow">
-            AVIYAN // A LITTLE SOMETHING
+        <div class="kicker">
+            A small question
         </div>
 
-        <h1 class="heroTitle">
-            It’s<br>
-            <span>raining.</span>
+        <h1>
+            It's<br>
+            <span class="red glow">raining.</span>
         </h1>
 
-        <p class="heroSubtitle">
-            And somehow, in the middle of all this noise,
-            I found myself thinking about one very simple thing...
-            <br><br>
-            <strong>you.</strong>
-        </p>
+        <div class="hero-line"></div>
+
+        <div class="hero-sub">
+            And somehow...<br>
+            I thought of you.
+        </div>
 
         <button
-            class="playButton"
-            id="playButton"
-            type="button"
+            class="button red-button"
+            id="startButton"
             onclick="startExperience()">
-
             ▶ PLAY THIS FOR ME
-
         </button>
 
-        <div
-            class="musicStatus"
-            id="musicStatus">
+        <!-- REAL VISIBLE YOUTUBE PLAYER -->
 
-            Tap once. Let the night begin.
+        <div class="music-card">
 
+            <div class="music-header">
+                <div class="music-title">
+                    NOW PLAYING
+                </div>
+
+                <div
+                    class="music-status"
+                    id="musicStatus">
+                    WAITING FOR YOU
+                </div>
+            </div>
+
+            <div class="youtube-wrap">
+                <div id="youtubePlayer"></div>
+            </div>
+
+            <div class="music-note">
+                If the music does not start automatically,
+                tap ▶ inside the YouTube player once.
+            </div>
+
+        </div>
+
+        <div class="scroll-note">
+            THERE'S SOMETHING ELSE BELOW ↓
         </div>
 
     </div>
-
 </section>
 
 
-<!-- =======================================================
-     INTRO
-======================================================= -->
+<!-- INTRO -->
 
-<section class="intro">
+<section class="reveal">
 
     <div class="container center">
 
-        <div class="sectionNumber">
-            01 // LISTEN
+        <div class="kicker">
+            Before anything else
         </div>
 
-        <h2 class="bigText">
+        <h2>
             Listen to the rain<br>
             for a second.
         </h2>
 
-        <p class="description">
-            There is something beautiful about rain.
-            It makes the world slow down.
-            Cars become distant.
-            Conversations become softer.
-            And sometimes you suddenly realize
-            who you actually want beside you.
+        <p>
+            Forget the world outside this screen.
+            Just for a moment.
         </p>
 
-    </div>
+        <div class="divider"></div>
 
+        <div class="big-quote">
+            Sometimes the nicest memories
+            begin with something very simple.
+        </div>
+
+    </div>
 </section>
 
 
-<!-- =======================================================
-     DATE QUESTION
-======================================================= -->
+<!-- DATE QUESTION -->
 
-<section class="questionSection" id="dateQuestion">
+<section id="dateQuestion" class="reveal">
 
-    <div class="questionCard">
+    <div class="container question">
 
-        <div class="sectionNumber">
-            02 // THE QUESTION
+        <div class="kicker">
+            Chapter 01
         </div>
 
-        <h2 class="question">
+        <h2>
             Would you let me<br>
             take you on a date?
         </h2>
 
-        <p class="questionSmall">
-            No pressure. Just one honest answer.
+        <p style="margin-bottom:35px;">
+            Nothing complicated.<br>
+            Just one day that belongs to us.
         </p>
 
-        <div class="choiceRow">
+        <div class="options">
 
             <button
-                class="btn primary"
-                type="button"
-                onclick="sayYes()">
-
+                class="choice"
+                onclick="chooseDate('YES')">
                 YES ❤️
-
             </button>
 
             <button
-                class="btn noBtn"
-                type="button"
-                onclick="declineDate()">
-
-                NO
-
+                class="choice"
+                onclick="chooseDate('LET ME THINK')">
+                LET ME THINK
             </button>
 
         </div>
 
-        <div id="noMessage"></div>
+        <p
+            id="dateResponse"
+            style="margin-top:30px;color:#ff4568;">
+        </p>
 
     </div>
-
 </section>
 
 
-<!-- =======================================================
-     YES INTRO
-======================================================= -->
+<!-- YES INTRO -->
 
-<section
-    class="yesIntro hidden"
-    id="yesIntro">
+<section id="plannerStart" class="reveal">
 
     <div class="container center">
 
-        <div class="sectionNumber">
-            03 // YOU SAID YES
+        <div class="kicker">
+            Then it's decided
         </div>
 
-        <h2 class="yesTitle">
-            Then let’s make<br>
-            <span>one ordinary day</span><br>
-            ours.
+        <h2>
+            Let's make one<br>
+            ordinary day ours.
         </h2>
 
-        <p class="yesText">
-            You don't have to plan everything.
-            You don't have to make it perfect.
-            Just choose the little things that sound like you.
-            I'll take care of the rest.
+        <p>
+            No perfect script.<br>
+            No pressure.<br>
+            Just little choices that feel like us.
         </p>
 
         <button
-            class="btn primary"
-            type="button"
-            onclick="openPlanner()">
-
-            LET'S PLAN OUR DATE →
-
+            class="button red-button"
+            onclick="showPlanner()"
+            style="margin-top:35px;">
+            LET'S PLAN IT ❤️
         </button>
 
     </div>
-
 </section>
 
 
-<!-- =======================================================
-     PLANNER
-======================================================= -->
+<!-- PLANNER -->
 
-<section
-    class="plannerSection hidden"
-    id="plannerSection">
+<section id="plannerSection">
 
-    <div class="planner">
+    <div class="container planner">
 
-        <div class="plannerHeader">
-
-            <div class="plannerHeaderTitle">
-                OUR LITTLE DATE // PLANNER
-            </div>
-
-            <div
-                class="stepCounter"
-                id="stepCounter">
-
-                01 / 10
-
-            </div>
-
+        <div class="kicker">
+            Our date
         </div>
 
-        <div class="progressTrack">
-
+        <div class="progress">
             <div
-                class="progressFill"
-                id="progressFill">
+                class="progress-bar"
+                id="progressBar">
             </div>
-
         </div>
 
 
@@ -2208,39 +1040,29 @@ textarea{
 
         <div class="step active" data-step="1">
 
-            <div class="stepNumber">
-                01 // WHEN
+            <div class="step-number">
+                01 / 10
             </div>
 
-            <h3 class="stepTitle">
-                Pick the day.
-            </h3>
+            <h2>
+                When should<br>
+                this happen?
+            </h2>
 
-            <p class="stepHint">
-                Give us a date worth remembering.
-            </p>
+            <div class="field">
+                <input
+                    type="date"
+                    id="date">
+            </div>
 
-            <label class="fieldLabel">
-                Date
-            </label>
-
-            <input
-                type="date"
-                id="dateInput">
-
-            <div class="plannerButtons">
-
+            <div class="step-buttons">
                 <span></span>
 
                 <button
-                    class="btn primary"
-                    type="button"
+                    class="button red-button"
                     onclick="nextStep()">
-
-                    NEXT →
-
+                    CONTINUE →
                 </button>
-
             </div>
 
         </div>
@@ -2250,45 +1072,33 @@ textarea{
 
         <div class="step" data-step="2">
 
-            <div class="stepNumber">
-                02 // TIME
+            <div class="step-number">
+                02 / 10
             </div>
 
-            <h3 class="stepTitle">
-                What time?
-            </h3>
+            <h2>
+                What time<br>
+                feels right?
+            </h2>
 
-            <p class="stepHint">
-                Morning coffee, golden evening,
-                or a night that somehow lasts too long.
-            </p>
+            <div class="field">
+                <input
+                    type="time"
+                    id="time">
+            </div>
 
-            <label class="fieldLabel">
-                Time
-            </label>
-
-            <input
-                type="time"
-                id="timeInput">
-
-            <div class="plannerButtons">
+            <div class="step-buttons">
 
                 <button
-                    class="btn"
-                    type="button"
-                    onclick="previousStep()">
-
+                    class="button"
+                    onclick="prevStep()">
                     ← BACK
-
                 </button>
 
                 <button
-                    class="btn primary"
-                    type="button"
+                    class="button red-button"
                     onclick="nextStep()">
-
-                    NEXT →
-
+                    CONTINUE →
                 </button>
 
             </div>
@@ -2300,101 +1110,49 @@ textarea{
 
         <div class="step" data-step="3">
 
-            <div class="stepNumber">
-                03 // PLACE
+            <div class="step-number">
+                03 / 10
             </div>
 
-            <h3 class="stepTitle">
-                Where should we go?
-            </h3>
+            <h2>
+                Where should<br>
+                I take you?
+            </h2>
 
-            <p class="stepHint">
-                Somewhere comfortable enough
-                that we forget to check the time.
-            </p>
+            <div class="grid">
 
-            <div class="optionGrid">
-
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'place','Cozy café')">
-
-                    <span class="optionTitle">
-                        ☕ COZY CAFÉ
-                    </span>
-
-                    <span class="optionDesc">
-                        Coffee, warm lights and talking.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'place','Cozy café')">
+                    ☕ Cozy café
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'place','Somewhere quiet')">
-
-                    <span class="optionTitle">
-                        🌙 SOMEWHERE QUIET
-                    </span>
-
-                    <span class="optionDesc">
-                        Away from everything.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'place','Somewhere quiet')">
+                    🌙 Somewhere quiet
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'place','City lights')">
-
-                    <span class="optionTitle">
-                        ✨ CITY LIGHTS
-                    </span>
-
-                    <span class="optionDesc">
-                        Walking beneath the night.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'place','City lights')">
+                    🌃 City lights
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'place','You choose')">
-
-                    <span class="optionTitle">
-                        ❤️ YOU CHOOSE
-                    </span>
-
-                    <span class="optionDesc">
-                        I trust your choice.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'place','You choose')">
+                    ❤️ You choose
                 </button>
 
             </div>
 
-            <div class="plannerButtons">
+            <div class="step-buttons">
 
-                <button
-                    class="btn"
-                    type="button"
-                    onclick="previousStep()">
-
+                <button class="button" onclick="prevStep()">
                     ← BACK
-
                 </button>
 
                 <button
-                    class="btn primary"
-                    type="button"
+                    class="button red-button"
                     onclick="nextStep()">
-
-                    NEXT →
-
+                    CONTINUE →
                 </button>
 
             </div>
@@ -2406,101 +1164,49 @@ textarea{
 
         <div class="step" data-step="4">
 
-            <div class="stepNumber">
-                04 // MOOD
+            <div class="step-number">
+                04 / 10
             </div>
 
-            <h3 class="stepTitle">
-                What should it feel like?
-            </h3>
+            <h2>
+                What kind of<br>
+                mood?
+            </h2>
 
-            <p class="stepHint">
-                Choose the atmosphere.
-                I'll remember the rest.
-            </p>
+            <div class="grid">
 
-            <div class="optionGrid">
-
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'mood','Rain + coffee')">
-
-                    <span class="optionTitle">
-                        🌧 RAIN + COFFEE
-                    </span>
-
-                    <span class="optionDesc">
-                        Soft weather and warmer conversations.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'mood','Rain + coffee')">
+                    🌧 Rain + coffee
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'mood','City lights')">
-
-                    <span class="optionTitle">
-                        🌃 CITY LIGHTS
-                    </span>
-
-                    <span class="optionDesc">
-                        A little cinematic.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'mood','City lights')">
+                    ✨ City lights
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'mood','Peaceful and quiet')">
-
-                    <span class="optionTitle">
-                        🌙 PEACEFUL
-                    </span>
-
-                    <span class="optionDesc">
-                        No rush. No noise.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'mood','Peaceful and quiet')">
+                    🌙 Peaceful and quiet
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'mood','Whatever feels natural')">
-
-                    <span class="optionTitle">
-                        ❤️ NATURAL
-                    </span>
-
-                    <span class="optionDesc">
-                        No script. Just us.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'mood','Whatever feels natural')">
+                    ❤️ Whatever feels natural
                 </button>
 
             </div>
 
-            <div class="plannerButtons">
+            <div class="step-buttons">
 
-                <button
-                    class="btn"
-                    type="button"
-                    onclick="previousStep()">
-
+                <button class="button" onclick="prevStep()">
                     ← BACK
-
                 </button>
 
                 <button
-                    class="btn primary"
-                    type="button"
+                    class="button red-button"
                     onclick="nextStep()">
-
-                    NEXT →
-
+                    CONTINUE →
                 </button>
 
             </div>
@@ -2512,100 +1218,49 @@ textarea{
 
         <div class="step" data-step="5">
 
-            <div class="stepNumber">
-                05 // FOOD
+            <div class="step-number">
+                05 / 10
             </div>
 
-            <h3 class="stepTitle">
-                What are we eating?
-            </h3>
+            <h2>
+                What are<br>
+                we eating?
+            </h2>
 
-            <p class="stepHint">
-                Because every good love story needs snacks.
-            </p>
+            <div class="grid">
 
-            <div class="optionGrid">
-
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'food','Coffee + dessert')">
-
-                    <span class="optionTitle">
-                        ☕ + 🍰
-                    </span>
-
-                    <span class="optionDesc">
-                        Coffee and something sweet.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'food','Coffee + dessert')">
+                    ☕ Coffee + dessert
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'food','Dinner')">
-
-                    <span class="optionTitle">
-                        🍽 DINNER
-                    </span>
-
-                    <span class="optionDesc">
-                        A proper little date.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'food','Dinner')">
+                    🍽 Dinner
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'food','Pizza')">
-
-                    <span class="optionTitle">
-                        🍕 PIZZA
-                    </span>
-
-                    <span class="optionDesc">
-                        Because pizza rarely disappoints.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'food','Pizza')">
+                    🍕 Pizza
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'food','Something new')">
-
-                    <span class="optionTitle">
-                        ✨ SOMETHING NEW
-                    </span>
-
-                    <span class="optionDesc">
-                        Let's discover it together.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'food','Something new')">
+                    ✨ Something new
                 </button>
 
             </div>
 
-            <div class="plannerButtons">
+            <div class="step-buttons">
 
-                <button
-                    class="btn"
-                    type="button"
-                    onclick="previousStep()">
-
+                <button class="button" onclick="prevStep()">
                     ← BACK
-
                 </button>
 
                 <button
-                    class="btn primary"
-                    type="button"
+                    class="button red-button"
                     onclick="nextStep()">
-
-                    NEXT →
-
+                    CONTINUE →
                 </button>
 
             </div>
@@ -2617,131 +1272,63 @@ textarea{
 
         <div class="step" data-step="6">
 
-            <div class="stepNumber">
-                06 // THINGS TO DO
+            <div class="step-number">
+                06 / 10
             </div>
 
-            <h3 class="stepTitle">
-                What should we do?
-            </h3>
+            <h2>
+                What should<br>
+                we do?
+            </h2>
 
-            <p class="stepHint">
+            <p class="multi-note">
                 Choose as many as you want.
-                There is no correct answer.
             </p>
 
-            <div class="optionGrid">
+            <div class="grid" style="margin-top:20px;">
 
-                <button
-                    class="option multiOption"
-                    type="button"
-                    onclick="toggleMulti(this,'Walk & explore')">
-
-                    <span class="optionTitle">
-                        🚶 WALK & EXPLORE
-                    </span>
-
-                    <span class="optionDesc">
-                        Let's see where the road takes us.
-                    </span>
-
+                <button class="choice multi"
+                    onclick="toggleMulti(this,'activities','Walk & explore')">
+                    🚶 Walk & explore
                 </button>
 
-                <button
-                    class="option multiOption"
-                    type="button"
-                    onclick="toggleMulti(this,'Just talk')">
-
-                    <span class="optionTitle">
-                        💬 JUST TALK
-                    </span>
-
-                    <span class="optionDesc">
-                        The conversations that last hours.
-                    </span>
-
+                <button class="choice multi"
+                    onclick="toggleMulti(this,'activities','Just talk')">
+                    💬 Just talk
                 </button>
 
-                <button
-                    class="option multiOption"
-                    type="button"
-                    onclick="toggleMulti(this,'Take silly photos')">
-
-                    <span class="optionTitle">
-                        📸 SILLY PHOTOS
-                    </span>
-
-                    <span class="optionDesc">
-                        Evidence that we actually had fun.
-                    </span>
-
+                <button class="choice multi"
+                    onclick="toggleMulti(this,'activities','Take silly photos')">
+                    📸 Take silly photos
                 </button>
 
-                <button
-                    class="option multiOption"
-                    type="button"
-                    onclick="toggleMulti(this,'Watch something')">
-
-                    <span class="optionTitle">
-                        🎬 WATCH SOMETHING
-                    </span>
-
-                    <span class="optionDesc">
-                        Something we can talk about afterwards.
-                    </span>
-
+                <button class="choice multi"
+                    onclick="toggleMulti(this,'activities','Watch something')">
+                    🎬 Watch something
                 </button>
 
-                <button
-                    class="option multiOption"
-                    type="button"
-                    onclick="toggleMulti(this,'Get lost somewhere')">
-
-                    <span class="optionTitle">
-                        🗺 GET LOST
-                    </span>
-
-                    <span class="optionDesc">
-                        The good kind of lost.
-                    </span>
-
+                <button class="choice multi"
+                    onclick="toggleMulti(this,'activities','Get lost somewhere')">
+                    🗺 Get lost somewhere
                 </button>
 
-                <button
-                    class="option multiOption"
-                    type="button"
-                    onclick="toggleMulti(this,'A little bit of everything')">
-
-                    <span class="optionTitle">
-                        ❤️ EVERYTHING
-                    </span>
-
-                    <span class="optionDesc">
-                        Why choose only one?
-                    </span>
-
+                <button class="choice multi"
+                    onclick="toggleMulti(this,'activities','A little bit of everything')">
+                    ❤️ A little bit of everything
                 </button>
 
             </div>
 
-            <div class="plannerButtons">
+            <div class="step-buttons">
 
-                <button
-                    class="btn"
-                    type="button"
-                    onclick="previousStep()">
-
+                <button class="button" onclick="prevStep()">
                     ← BACK
-
                 </button>
 
                 <button
-                    class="btn primary"
-                    type="button"
+                    class="button red-button"
                     onclick="nextStep()">
-
-                    NEXT →
-
+                    CONTINUE →
                 </button>
 
             </div>
@@ -2753,102 +1340,49 @@ textarea{
 
         <div class="step" data-step="7">
 
-            <div class="stepNumber">
-                07 // SOUNDTRACK
+            <div class="step-number">
+                07 / 10
             </div>
 
-            <h3 class="stepTitle">
-                What should play?
-            </h3>
+            <h2>
+                What's playing<br>
+                in the background?
+            </h2>
 
-            <p class="stepHint">
-                Maybe music.
-                Maybe just our voices.
-                Maybe whatever happens naturally.
-            </p>
+            <div class="grid">
 
-            <div class="optionGrid">
-
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'music','Romantic')">
-
-                    <span class="optionTitle">
-                        ❤️ ROMANTIC
-                    </span>
-
-                    <span class="optionDesc">
-                        Something that stays in our heads.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'soundtrack','Romantic')">
+                    ❤️ Romantic
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'music','Chill')">
-
-                    <span class="optionTitle">
-                        🌙 CHILL
-                    </span>
-
-                    <span class="optionDesc">
-                        Soft and easy.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'soundtrack','Chill')">
+                    🌙 Chill
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'music','Your playlist')">
-
-                    <span class="optionTitle">
-                        🎧 YOUR PLAYLIST
-                    </span>
-
-                    <span class="optionDesc">
-                        You control the soundtrack.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'soundtrack','Your playlist')">
+                    🎧 Your playlist
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'music','No music')">
-
-                    <span class="optionTitle">
-                        🤍 NO MUSIC
-                    </span>
-
-                    <span class="optionDesc">
-                        Just conversation.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'soundtrack','No music')">
+                    🤍 No music
                 </button>
 
             </div>
 
-            <div class="plannerButtons">
+            <div class="step-buttons">
 
-                <button
-                    class="btn"
-                    type="button"
-                    onclick="previousStep()">
-
+                <button class="button" onclick="prevStep()">
                     ← BACK
-
                 </button>
 
                 <button
-                    class="btn primary"
-                    type="button"
+                    class="button red-button"
                     onclick="nextStep()">
-
-                    NEXT →
-
+                    CONTINUE →
                 </button>
 
             </div>
@@ -2860,101 +1394,49 @@ textarea{
 
         <div class="step" data-step="8">
 
-            <div class="stepNumber">
-                08 // OUTFIT
+            <div class="step-number">
+                08 / 10
             </div>
 
-            <h3 class="stepTitle">
-                What are you wearing?
-            </h3>
+            <h2>
+                What are<br>
+                you wearing?
+            </h2>
 
-            <p class="stepHint">
-                Completely your choice.
-                I already know you'll look beautiful.
-            </p>
+            <div class="grid">
 
-            <div class="optionGrid">
-
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'outfit','Casual')">
-
-                    <span class="optionTitle">
-                        🤍 CASUAL
-                    </span>
-
-                    <span class="optionDesc">
-                        Comfortable and completely you.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'outfit','Casual')">
+                    🤍 Casual
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'outfit','Smart')">
-
-                    <span class="optionTitle">
-                        ✨ SMART
-                    </span>
-
-                    <span class="optionDesc">
-                        A little dressed up.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'outfit','Smart')">
+                    ✨ Smart
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'outfit','All black')">
-
-                    <span class="optionTitle">
-                        🖤 ALL BLACK
-                    </span>
-
-                    <span class="optionDesc">
-                        Dangerous choice.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'outfit','All black')">
+                    🖤 All black
                 </button>
 
-                <button
-                    class="option"
-                    type="button"
-                    onclick="selectOption(this,'outfit','Surprise me')">
-
-                    <span class="optionTitle">
-                        ❤️ SURPRISE ME
-                    </span>
-
-                    <span class="optionDesc">
-                        I'll wait and see.
-                    </span>
-
+                <button class="choice"
+                    onclick="selectSingle(this,'outfit','Surprise me')">
+                    ❤️ Surprise me
                 </button>
 
             </div>
 
-            <div class="plannerButtons">
+            <div class="step-buttons">
 
-                <button
-                    class="btn"
-                    type="button"
-                    onclick="previousStep()">
-
+                <button class="button" onclick="prevStep()">
                     ← BACK
-
                 </button>
 
                 <button
-                    class="btn primary"
-                    type="button"
+                    class="button red-button"
                     onclick="nextStep()">
-
-                    NEXT →
-
+                    CONTINUE →
                 </button>
 
             </div>
@@ -2966,42 +1448,31 @@ textarea{
 
         <div class="step" data-step="9">
 
-            <div class="stepNumber">
-                09 // REMEMBER
+            <div class="step-number">
+                09 / 10
             </div>
 
-            <h3 class="stepTitle">
-                Something you want me to remember.
-            </h3>
+            <h2>
+                What memory<br>
+                should we create?
+            </h2>
 
-            <p class="stepHint">
-                A little detail.
-                A favorite thing.
-                Something that would make the day feel more like you.
-            </p>
+            <div class="field">
+                <textarea
+                    id="memory"
+                    placeholder="Something you would want us to remember..."></textarea>
+            </div>
 
-            <textarea
-                id="memoryInput"
-                placeholder="Tell me something you want me to remember..."></textarea>
+            <div class="step-buttons">
 
-            <div class="plannerButtons">
-
-                <button
-                    class="btn"
-                    type="button"
-                    onclick="previousStep()">
-
+                <button class="button" onclick="prevStep()">
                     ← BACK
-
                 </button>
 
                 <button
-                    class="btn primary"
-                    type="button"
+                    class="button red-button"
                     onclick="nextStep()">
-
-                    NEXT →
-
+                    CONTINUE →
                 </button>
 
             </div>
@@ -3013,214 +1484,37 @@ textarea{
 
         <div class="step" data-step="10">
 
-            <div class="stepNumber">
-                10 // SECRET
+            <div class="step-number">
+                10 / 10
             </div>
 
-            <h3 class="stepTitle">
-                One secret.
-            </h3>
-
-            <p class="stepHint">
-                Something you don't have to say out loud.
-                Leave it here.
-            </p>
-
-            <textarea
-                id="secretInput"
-                placeholder="Only for this little date plan..."></textarea>
-
-            <div class="plannerButtons">
-
-                <button
-                    class="btn"
-                    type="button"
-                    onclick="previousStep()">
-
-                    ← BACK
-
-                </button>
-
-                <button
-                    class="btn primary"
-                    type="button"
-                    onclick="finishDate()">
-
-                    CREATE OUR DATE ❤️
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     RESULT
-======================================================= -->
-
-<section
-    class="resultSection hidden"
-    id="resultSection">
-
-    <div class="container">
-
-        <div class="resultCard">
-
-            <div class="sectionNumber">
-                04 // DATE CONFIRMED
-            </div>
-
-            <h2 class="resultTitle">
-                It's a plan.
+            <h2>
+                One secret...
             </h2>
 
-            <p class="resultSubtitle">
-                Not just a date on a calendar anymore.
-                It's something we can look forward to.
+            <p>
+                Something you want me to know
+                before our date.
             </p>
 
-            <div class="resultGrid">
+            <div class="field">
 
-                <div class="resultItem">
-
-                    <span class="resultKey">
-                        DATE
-                    </span>
-
-                    <span
-                        class="resultValue"
-                        id="resultDate">
-                    </span>
-
-                </div>
-
-                <div class="resultItem">
-
-                    <span class="resultKey">
-                        TIME
-                    </span>
-
-                    <span
-                        class="resultValue"
-                        id="resultTime">
-                    </span>
-
-                </div>
-
-                <div class="resultItem">
-
-                    <span class="resultKey">
-                        PLACE
-                    </span>
-
-                    <span
-                        class="resultValue"
-                        id="resultPlace">
-                    </span>
-
-                </div>
-
-                <div class="resultItem">
-
-                    <span class="resultKey">
-                        MOOD
-                    </span>
-
-                    <span
-                        class="resultValue"
-                        id="resultMood">
-                    </span>
-
-                </div>
-
-                <div class="resultItem">
-
-                    <span class="resultKey">
-                        FOOD
-                    </span>
-
-                    <span
-                        class="resultValue"
-                        id="resultFood">
-                    </span>
-
-                </div>
-
-                <div class="resultItem">
-
-                    <span class="resultKey">
-                        MUSIC
-                    </span>
-
-                    <span
-                        class="resultValue"
-                        id="resultMusic">
-                    </span>
-
-                </div>
-
-                <div class="resultItem">
-
-                    <span class="resultKey">
-                        OUTFIT
-                    </span>
-
-                    <span
-                        class="resultValue"
-                        id="resultOutfit">
-                    </span>
-
-                </div>
-
-                <div class="resultItem">
-
-                    <span class="resultKey">
-                        PLANS
-                    </span>
-
-                    <span
-                        class="resultValue"
-                        id="resultActivities">
-                    </span>
-
-                </div>
+                <textarea
+                    id="secret"
+                    placeholder="You can tell me anything..."></textarea>
 
             </div>
 
-            <div class="resultMemory">
+            <div class="step-buttons">
 
-                <span class="resultKey">
-                    YOU ASKED ME TO REMEMBER
-                </span>
-
-                <p id="resultMemory"></p>
-
-            </div>
-
-            <div class="resultMemory">
-
-                <span class="resultKey">
-                    THE SECRET
-                </span>
-
-                <p id="resultSecret"></p>
-
-            </div>
-
-            <div class="continueButtonWrap">
+                <button class="button" onclick="prevStep()">
+                    ← BACK
+                </button>
 
                 <button
-                    class="btn primary"
-                    type="button"
-                    onclick="unlockStory()">
-
-                    THERE'S MORE ❤️ →
-
+                    class="button red-button"
+                    onclick="finishDate()">
+                    CREATE OUR DATE ❤️
                 </button>
 
             </div>
@@ -3228,520 +1522,462 @@ textarea{
         </div>
 
     </div>
-
 </section>
 
 
-<!-- =======================================================
-     STORY INTRO
-======================================================= -->
+<!-- RESULT -->
 
 <section
-    class="story storyIntro"
-    id="storyIntro">
+    id="resultSection"
+    class="reveal"
+    style="display:none;">
 
-    <div class="container center">
+    <div class="container result-card">
 
-        <div class="sectionNumber">
-            05 // AFTER THE PLAN
-        </div>
-
-        <h2 class="storyHeading">
-            Now comes<br>
-            the part I<br>
-            <span>can't plan.</span>
-        </h2>
-
-        <p class="storyLead">
-            The little things that happen when two people stop
-            following a plan and simply start enjoying being
-            around each other.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     ABOUT
-======================================================= -->
-
-<section class="story about">
-
-    <div class="container">
-
-        <div class="sectionNumber">
-            06 // THE LITTLE THINGS
-        </div>
-
-        <h2 class="bigText">
-            Things I hope<br>
-            happen naturally.
-        </h2>
-
-        <div class="aboutGrid">
-
-            <div class="aboutCard">
-
-                <div class="aboutCardNumber">
-                    01
-                </div>
-
-                <h3>
-                    The first smile
-                </h3>
-
-                <p>
-                    That tiny moment when the nervousness disappears
-                    and both of us realize we can simply relax.
-                </p>
-
-            </div>
-
-            <div class="aboutCard">
-
-                <div class="aboutCardNumber">
-                    02
-                </div>
-
-                <h3>
-                    The first laugh
-                </h3>
-
-                <p>
-                    Hopefully something ridiculous happens.
-                    The kind of laugh that makes the original plan
-                    completely irrelevant.
-                </p>
-
-            </div>
-
-            <div class="aboutCard">
-
-                <div class="aboutCardNumber">
-                    03
-                </div>
-
-                <h3>
-                    The comfortable silence
-                </h3>
-
-                <p>
-                    Because sometimes the nicest conversations
-                    happen without words.
-                </p>
-
-            </div>
-
-            <div class="aboutCard">
-
-                <div class="aboutCardNumber">
-                    04
-                </div>
-
-                <h3>
-                    Losing track of time
-                </h3>
-
-                <p>
-                    Looking at the clock and realizing
-                    we somehow spent hours talking.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     QUESTIONS
-======================================================= -->
-
-<section class="story questions">
-
-    <div class="container">
-
-        <div class="sectionNumber">
-            07 // QUESTIONS
-        </div>
-
-        <h2 class="bigText">
-            Things I'd rather<br>
-            discover from you.
-        </h2>
-
-        <div class="questionList">
-
-            <div class="questionLine">
-                What makes you laugh when you're having a bad day?
-            </div>
-
-            <div class="questionLine">
-                What is something you've always wanted to do?
-            </div>
-
-            <div class="questionLine">
-                What kind of places make you feel peaceful?
-            </div>
-
-            <div class="questionLine">
-                What song could you listen to a hundred times?
-            </div>
-
-            <div class="questionLine">
-                What is one tiny thing that always makes you happy?
-            </div>
-
-            <div class="questionLine">
-                And what would make you want there to be a second date?
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     SCENE ONE
-======================================================= -->
-
-<section class="story scene sceneOne">
-
-    <div class="container">
-
-        <div class="sceneSmall">
-            SCENE 01 // ARRIVAL
-        </div>
-
-        <div class="sceneText">
-            I imagine the first few minutes will be a little awkward.
-            <br><br>
-            We'll probably both pretend we're completely calm.
-            <br><br>
-            And then you'll smile...
-            <br><br>
-            and suddenly
-            <em>everything will feel easier.</em>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     SCENE TWO
-======================================================= -->
-
-<section class="story scene sceneTwo">
-
-    <div class="container">
-
-        <div class="sceneSmall">
-            SCENE 02 // SOMEWHERE BETWEEN
-        </div>
-
-        <div class="sceneText">
-            Somewhere between the first coffee
-            and the last conversation,
-            I hope we stop thinking about
-            what a first date is supposed to look like.
-            <br><br>
-            I hope it just becomes
-            <em>our evening.</em>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     SCENE THREE
-======================================================= -->
-
-<section class="story scene sceneThree">
-
-    <div class="container">
-
-        <div class="sceneSmall">
-            SCENE 03 // THE CLOCK
-        </div>
-
-        <div class="sceneText">
-            And maybe,
-            when the night is almost over,
-            one of us will look at the clock and say...
-            <br><br>
-            <em>"Already?"</em>
-            <br><br>
-            That would be my favorite part.
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     POTENTIAL PROBLEMS
-======================================================= -->
-
-<section class="story problems">
-
-    <div class="container">
-
-        <div class="sectionNumber">
-            08 // POTENTIAL PROBLEMS
-        </div>
-
-        <h2 class="bigText">
-            A few things<br>
-            could go wrong.
-        </h2>
-
-        <div class="problemBox">
-
-            <div class="problem">
-
-                <span>
-                    We might talk for too long.
-                </span>
-
-                <span>
-                    ACCEPTED
-                </span>
-
-            </div>
-
-            <div class="problem">
-
-                <span>
-                    We might laugh at something stupid.
-                </span>
-
-                <span>
-                    ACCEPTED
-                </span>
-
-            </div>
-
-            <div class="problem">
-
-                <span>
-                    We might forget to take enough photos.
-                </span>
-
-                <span>
-                    PROBABLE
-                </span>
-
-            </div>
-
-            <div class="problem">
-
-                <span>
-                    We might not want the evening to end.
-                </span>
-
-                <span>
-                    POSSIBLE
-                </span>
-
-            </div>
-
-            <div class="problem">
-
-                <span>
-                    We might accidentally create a memory.
-                </span>
-
-                <span>
-                    HIGH RISK
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     THINGS I HOPE YOU NOTICE
-======================================================= -->
-
-<section class="story notice">
-
-    <div class="container">
-
-        <div class="sectionNumber">
-            09 // DETAILS
-        </div>
-
-        <h2 class="bigText">
-            Things I hope<br>
-            you notice.
-        </h2>
-
-        <div class="noticeGrid">
-
-            <div class="noticeCard">
-
-                <div class="icon">
-                    01
-                </div>
-
-                <p>
-                    How much thought went into choosing
-                    the smallest details of this day.
-                </p>
-
-            </div>
-
-            <div class="noticeCard">
-
-                <div class="icon">
-                    02
-                </div>
-
-                <p>
-                    That I won't need anything extravagant.
-                    Your company is already enough.
-                </p>
-
-            </div>
-
-            <div class="noticeCard">
-
-                <div class="icon">
-                    03
-                </div>
-
-                <p>
-                    That if you laugh,
-                    I'll probably remember that moment
-                    much longer than anything else.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     QUIET SCENE
-======================================================= -->
-
-<section class="story quiet">
-
-    <div class="container center">
-
-        <div class="quietText">
-
-            Maybe there will be a moment
-            when neither of us says anything.
-
-            <br><br>
-
-            And somehow,
-            it won't feel awkward.
-
-            <br><br>
-
-            It will just feel
-            <span style="color:#ff1744;">
-                peaceful.
-            </span>
-
-            <small>
-                SOME MOMENTS DON'T NEED A SOUNDTRACK.
-            </small>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     LETTER
-======================================================= -->
-
-<section class="story letter">
-
-    <div class="letterPaper">
-
-        <div class="letterTop">
-            PRIVATE LETTER // DO NOT RUSH
+        <div class="kicker">
+            Date confirmed
         </div>
 
         <h2>
-            Dear you,
+            So this is<br>
+            <span class="red">our plan.</span>
         </h2>
 
-        <p>
-            I don't know exactly what our date will look like.
-            Maybe the weather will cooperate.
-            Maybe it won't.
-            Maybe we'll follow the plan.
-            Maybe we'll forget it completely.
-        </p>
+        <div class="glass">
 
-        <p>
-            And honestly,
-            I think I'd be happy either way.
-        </p>
+            <div class="result-row">
+                <div class="result-label">Date</div>
+                <div class="result-value" id="resultDate">—</div>
+            </div>
 
-        <p>
-            Because the part I'm looking forward to isn't
-            the restaurant, the coffee, the lights,
-            the music or even the place.
-        </p>
+            <div class="result-row">
+                <div class="result-label">Time</div>
+                <div class="result-value" id="resultTime">—</div>
+            </div>
 
-        <p>
-            It's the moment when all of those things become
-            part of a memory that belongs to both of us.
-        </p>
+            <div class="result-row">
+                <div class="result-label">Place</div>
+                <div class="result-value" id="resultPlace">—</div>
+            </div>
 
-        <p>
-            I want to hear the stories you haven't told me yet.
-            I want to discover the little things that make you smile.
-            I want to know what makes you feel safe,
-            what makes you laugh,
-            what makes you dream.
-        </p>
+            <div class="result-row">
+                <div class="result-label">Mood</div>
+                <div class="result-value" id="resultMood">—</div>
+            </div>
 
-        <p>
-            I don't want to rush any of it.
-        </p>
+            <div class="result-row">
+                <div class="result-label">Food</div>
+                <div class="result-value" id="resultFood">—</div>
+            </div>
 
-        <p>
-            I just want to sit across from you,
-            look at you,
-            and think...
-            <br><br>
-            <strong>
-                "I'm really glad we finally did this."
-            </strong>
-        </p>
+            <div class="result-row">
+                <div class="result-label">Activities</div>
+                <div class="result-value" id="resultActivities">—</div>
+            </div>
 
-        <div class="signature">
-            — Aviyan ❤️
+            <div class="result-row">
+                <div class="result-label">Soundtrack</div>
+                <div class="result-value" id="resultSoundtrack">—</div>
+            </div>
+
+            <div class="result-row">
+                <div class="result-label">Outfit</div>
+                <div class="result-value" id="resultOutfit">—</div>
+            </div>
+
+            <div class="result-row">
+                <div class="result-label">Memory</div>
+                <div class="result-value" id="resultMemory">—</div>
+            </div>
+
+            <div class="result-row">
+                <div class="result-label">Secret</div>
+                <div class="result-value" id="resultSecret">—</div>
+            </div>
+
+        </div>
+
+        <div class="center" style="margin-top:40px;">
+
+            <p>
+                Everything is ready.
+            </p>
+
+            <button
+                class="button red-button"
+                onclick="goToStory()"
+                style="margin-top:25px;">
+                THERE'S MORE ❤️
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- STORY -->
+
+<section class="story">
+
+    <div class="container">
+
+        <div class="story-block reveal">
+
+            <div class="story-number">
+                CHAPTER 02 — THE LITTLE THINGS
+            </div>
+
+            <h2>
+                I don't need<br>
+                a perfect date.
+            </h2>
+
+            <p>
+                I don't need an expensive restaurant,
+                a perfect sunset, or some impossible
+                movie scene.
+            </p>
+
+            <div class="big-quote">
+                I just want a few hours where
+                the rest of the world feels quiet.
+            </div>
+
+            <p>
+                A table somewhere.
+                Two drinks.
+                A conversation that somehow lasts
+                longer than we expected.
+            </p>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-number">
+                CHAPTER 03 — THE ARRIVAL
+            </div>
+
+            <h2>
+                The moment<br>
+                you arrive.
+            </h2>
+
+            <p>
+                I already know what will happen.
+            </p>
+
+            <p style="margin-top:20px;">
+                I'll probably pretend I'm completely calm.
+                I'll probably check the time even though
+                I already know exactly what time it is.
+            </p>
+
+            <p style="margin-top:20px;">
+                And then I'll see you.
+            </p>
+
+            <div class="big-quote">
+                And suddenly,
+                every sentence I prepared
+                will disappear.
+            </div>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-number">
+                CHAPTER 04 — SOMEWHERE BETWEEN
+            </div>
+
+            <h2>
+                Somewhere<br>
+                between hello<br>
+                and goodbye.
+            </h2>
+
+            <p>
+                Maybe we'll talk about everything.
+                Maybe we'll talk about nothing.
+            </p>
+
+            <p style="margin-top:20px;">
+                Maybe there will be awkward silences.
+                Maybe we'll laugh at things that
+                aren't even funny.
+            </p>
+
+            <p style="margin-top:20px;">
+                And honestly...
+                I think I'll like those moments too.
+            </p>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-number">
+                CHAPTER 05 — THE CLOCK
+            </div>
+
+            <h2>
+                I already know<br>
+                my least favourite moment.
+            </h2>
+
+            <div class="big-quote">
+                When the clock tells us
+                that it's time to leave.
+            </div>
+
+            <p>
+                Because good moments have this
+                unfair habit of ending exactly
+                when you start wishing they wouldn't.
+            </p>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-number">
+                CHAPTER 06 — IF SOMETHING GOES WRONG
+            </div>
+
+            <h2>
+                Something probably will.
+            </h2>
+
+            <p>
+                The weather could change.
+                The restaurant could be crowded.
+                We could get lost.
+                We could miss a train.
+            </p>
+
+            <div class="big-quote">
+                But maybe those are the memories
+                we'll talk about years later.
+            </div>
+
+            <p>
+                Perfect plans make beautiful photographs.
+                Imperfect days make stories.
+            </p>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-number">
+                CHAPTER 07 — THINGS I HOPE YOU NOTICE
+            </div>
+
+            <h2>
+                If you look closely...
+            </h2>
+
+            <p>
+                You'll probably notice that I look at you
+                when you're not looking at me.
+            </p>
+
+            <p style="margin-top:20px;">
+                You'll notice that I remember small things
+                you probably thought I forgot.
+            </p>
+
+            <p style="margin-top:20px;">
+                You'll notice that I listen.
+            </p>
+
+            <div class="big-quote">
+                Because when someone matters,
+                the little things stop being little.
+            </div>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-number">
+                CHAPTER 08 — THE QUIET SCENE
+            </div>
+
+            <h2>
+                Maybe my favourite<br>
+                part is the quiet.
+            </h2>
+
+            <p>
+                No cameras.
+                No messages.
+                No notifications.
+                No one asking where we are.
+            </p>
+
+            <p style="margin-top:20px;">
+                Just sitting somewhere,
+                watching the world move around us.
+            </p>
+
+            <p style="margin-top:20px;">
+                And for a little while,
+                not needing anything else.
+            </p>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-number">
+                CHAPTER 09 — PRIVATE LETTER
+            </div>
+
+            <div class="letter">
+
+                <h3>
+                    Dear you,
+                </h3>
+
+                <br>
+
+                <p>
+                    I don't know exactly what our date
+                    will look like.
+                </p>
+
+                <p>
+                    Maybe we'll laugh all evening.
+                    Maybe we'll be shy at first.
+                    Maybe we'll discover that we're
+                    both terrible at choosing what
+                    to eat.
+                </p>
+
+                <p>
+                    I don't know.
+                </p>
+
+                <p>
+                    And strangely,
+                    that's what makes it beautiful.
+                </p>
+
+                <p>
+                    Because I don't want a memory
+                    that feels rehearsed.
+                </p>
+
+                <p>
+                    I want something real.
+                </p>
+
+                <p>
+                    Something we can look back on
+                    and say,
+                    "Remember that day?"
+                </p>
+
+                <p>
+                    And then smile before either of us
+                    even finishes the sentence.
+                </p>
+
+                <p>
+                    That's all I'm asking for.
+                </p>
+
+                <p>
+                    One day.
+                    One chance.
+                    One little memory
+                    that belongs only to us.
+                </p>
+
+                <p>
+                    Until then,
+                    I'll keep the invitation open.
+                </p>
+
+                <p style="color:#ff4568;">
+                    — Aviyan ❤️
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="story-block reveal">
+
+            <div class="story-number">
+                CHAPTER 10 — UNTIL THEN
+            </div>
+
+            <div class="terminal">
+
+                <div class="terminal-head">
+
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+
+                </div>
+
+                <div class="terminal-body">
+
+                    <div>
+                        $ date --status
+                    </div>
+
+                    <div class="active-line">
+                        DATE_STATUS = WAITING
+                    </div>
+
+                    <br>
+
+                    <div>
+                        $ memories --future
+                    </div>
+
+                    <div class="active-line">
+                        MEMORY_001 = NOT_CREATED_YET
+                    </div>
+
+                    <br>
+
+                    <div>
+                        $ reason
+                    </div>
+
+                    <div>
+                        waiting for the right moment...
+                    </div>
+
+                    <br>
+
+                    <div class="active-line">
+                        $ ./hope
+                    </div>
+
+                    <div>
+                        still running.
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
@@ -3749,103 +1985,45 @@ textarea{
 </section>
 
 
-<!-- =======================================================
-     UNTIL THEN
-======================================================= -->
+<!-- FINAL -->
 
-<section class="story until">
+<section class="final reveal">
 
-    <div class="untilContent">
+    <div class="container center">
 
-        <div class="sectionNumber">
-            10 // UNTIL THEN
+        <div class="kicker">
+            Final chapter
         </div>
 
-        <h2 class="untilTitle">
-            Until<br>
-            <span>then.</span>
+        <h2>
+            Maybe one day...
         </h2>
 
-        <p class="untilText">
-            Until our date becomes an actual day,
-            this little page can stay here.
-            <br><br>
-            A tiny reminder that somewhere,
-            someone is looking forward to seeing you.
-            <br><br>
-            No pressure.
-            No perfect script.
-            Just something beautiful to look forward to.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     FINAL
-======================================================= -->
-
-<section class="story final">
-
-    <div class="finalContent">
-
-        <div class="finalTiny">
-            FINAL CHAPTER // KEEP THIS MOMENT
-        </div>
-
-        <h2 class="finalTitle">
-            Maybe this<br>
-            is where<br>
-            <span>it begins.</span>
-        </h2>
-
-        <p class="finalParagraph">
+        <div class="final-message">
 
             Maybe one day we'll come back to this page
             and laugh at how much thought went into
-            planning one simple date.
+            planning one little date.
 
             <br><br>
 
             Maybe we'll remember the exact day.
-            Maybe we'll remember what we ate.
-            Maybe we'll remember the weather.
-            Maybe we'll remember what we were wearing.
+            The exact place.
+            The exact weather.
 
             <br><br>
 
-            Or maybe we'll forget all those details.
+            But more than anything,
+            I hope we remember the feeling.
 
             <br><br>
-
-            <strong>
-                But I hope we never forget the feeling.
-            </strong>
-
-        </p>
-
-        <div class="finalDivider"></div>
-
-        <p class="finalLast">
 
             The feeling of one person asking,
-            and another person choosing a day.
+            and another choosing to stay for the story.
 
             <br><br>
 
-            The feeling of knowing that somewhere ahead
-            there is a little piece of time that belongs
-            to a memory we haven't made yet.
-
-            <br><br>
-
-            I don't know what tomorrow promises.
-
-            <br><br>
-
-            And I don't want to write our story for you.
+            I don't want to write our story for you.
 
             <br><br>
 
@@ -3860,15 +2038,6 @@ textarea{
 
             I'll bring the nervous smile.
 
-            <br>
-
-            I'll bring the stories.
-
-            <br>
-
-            I'll bring all the little things
-            I never knew how to say properly.
-
             <br><br>
 
             And if I'm lucky...
@@ -3882,14 +2051,16 @@ textarea{
             <br><br>
 
             It was about creating
-            <strong>
-                our first memory.
-            </strong>
+            <span class="red">our first memory.</span>
 
-        </p>
+        </div>
 
-        <div class="heartFinal">
-            ❤️
+        <div class="signature">
+            Until then, ❤️
+        </div>
+
+        <div style="margin-top:20px;color:#555;font-family:'Space Mono';font-size:9px;letter-spacing:2px;">
+            AV I Y A N
         </div>
 
     </div>
@@ -3897,1229 +2068,718 @@ textarea{
 </section>
 
 
+<script src="https://www.youtube.com/iframe_api"></script>
+
 <script>
 
-/* =========================================================
+/* ==========================================
    DATE DATA
-========================================================= */
+========================================== */
 
-const datePlan = {
-
+const dateData = {
     date:"",
     time:"",
     place:"",
     mood:"",
     food:"",
     activities:[],
-    music:"",
+    soundtrack:"",
     outfit:"",
     memory:"",
     secret:""
-
 };
 
 let currentStep = 1;
-
 const totalSteps = 10;
 
-let musicStarted = false;
 
-let musicPlaying = false;
+/* ==========================================
+   YOUTUBE MUSIC
+========================================== */
 
+let ytPlayer = null;
+let youtubeReady = false;
+let musicRequested = false;
 
-/* =========================================================
-   LOCAL DATE
-========================================================= */
+const VIDEO_ID = "nyuo9-OjNNg";
 
-function getLocalDate(){
+window.onYouTubeIframeAPIReady = function(){
 
-    const now = new Date();
+    youtubeReady = true;
 
-    const year =
-        now.getFullYear();
+    createYouTubePlayer();
 
-    const month =
-        String(now.getMonth()+1)
-        .padStart(2,"0");
-
-    const day =
-        String(now.getDate())
-        .padStart(2,"0");
-
-    return `${year}-${month}-${day}`;
-
-}
+};
 
 
-/* =========================================================
-   SET DATE MINIMUM
-========================================================= */
+function createYouTubePlayer(){
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
+    const target =
+        document.getElementById("youtubePlayer");
 
-        const dateInput =
-            document.getElementById("dateInput");
+    if(!target || !window.YT) return;
 
-        if(dateInput){
+    if(ytPlayer) return;
 
-            dateInput.min =
-                getLocalDate();
+    const playerVars = {
+        playsinline:1,
+        controls:1,
+        rel:0,
+        modestbranding:1,
+        enablejsapi:1
+    };
 
+    if(
+        location.protocol === "http:" ||
+        location.protocol === "https:"
+    ){
+        playerVars.origin = location.origin;
+    }
+
+    ytPlayer = new YT.Player(
+        "youtubePlayer",
+        {
+            width:"100%",
+            height:"100%",
+            videoId:VIDEO_ID,
+
+            playerVars:playerVars,
+
+            events:{
+
+                onReady:function(event){
+
+                    event.target.setVolume(100);
+
+                    setMusicStatus(
+                        "READY"
+                    );
+
+                    if(musicRequested){
+
+                        try{
+                            event.target.playVideo();
+                        }catch(error){}
+                    }
+
+                },
+
+                onStateChange:function(event){
+
+                    if(!window.YT) return;
+
+                    if(
+                        event.data ===
+                        YT.PlayerState.PLAYING
+                    ){
+
+                        setMusicStatus(
+                            "PLAYING ❤️"
+                        );
+
+                    }
+
+                    else if(
+                        event.data ===
+                        YT.PlayerState.PAUSED
+                    ){
+
+                        setMusicStatus(
+                            "PAUSED"
+                        );
+
+                    }
+
+                    else if(
+                        event.data ===
+                        YT.PlayerState.ENDED
+                    ){
+
+                        setMusicStatus(
+                            "ENDED"
+                        );
+
+                    }
+                },
+
+                onAutoplayBlocked:function(){
+
+                    setMusicStatus(
+                        "TAP ▶ TO PLAY"
+                    );
+
+                },
+
+                onError:function(event){
+
+                    setMusicStatus(
+                        "YOUTUBE ERROR " + event.data
+                    );
+
+                }
+
+            }
         }
-
-        createRain(
-            "rainHero",
-            100
-        );
-
-        loadSavedPlan();
-
-    }
-);
-
-
-/* =========================================================
-   RAIN
-========================================================= */
-
-function createRain(id,count){
-
-    const container =
-        document.getElementById(id);
-
-    if(!container) return;
-
-    for(let i=0;i<count;i++){
-
-        const drop =
-            document.createElement("div");
-
-        drop.className="drop";
-
-        drop.style.left =
-            Math.random()*110+"%";
-
-        drop.style.animationDuration =
-            (0.7 + Math.random()*1.5)+"s";
-
-        drop.style.animationDelay =
-            (-Math.random()*3)+"s";
-
-        drop.style.opacity =
-            (0.15 + Math.random()*0.55);
-
-        drop.style.height =
-            (45 + Math.random()*90)+"px";
-
-        container.appendChild(drop);
-
-    }
+    );
 
 }
 
 
-/* =========================================================
-   START EXPERIENCE
-========================================================= */
-
-function startExperience(){
-
-    const button =
-        document.getElementById("playButton");
+function setMusicStatus(message){
 
     const status =
         document.getElementById("musicStatus");
 
-    const frame =
-        document.getElementById("musicFrame");
-
-    if(!musicStarted){
-
-        musicStarted=true;
-
-        musicPlaying=true;
-
-        const videoID =
-            "nyuo9-OjNNg";
-
-        /*
-           YouTube is intentionally loaded only after
-           the visitor presses the button. This gives the
-           browser a user gesture to work with.
-        */
-
-        frame.src =
-            "https://www.youtube.com/embed/"
-            + videoID
-            + "?autoplay=1"
-            + "&loop=1"
-            + "&playlist="+videoID
-            + "&playsinline=1"
-            + "&controls=0"
-            + "&rel=0"
-            + "&modestbranding=1"
-            + "&enablejsapi=1";
-
-        button.innerHTML =
-            "✓ THE NIGHT HAS STARTED";
-
-        status.innerHTML =
-            "♪ I Wanna Be Yours — Arctic Monkeys";
-
-        document
-            .getElementById("musicBar")
-            .classList.add("show");
-
-        burstHearts(18);
-
+    if(status){
+        status.textContent = message;
     }
-
-    document
-        .getElementById("intro")
-        ?.scrollIntoView({
-            behavior:"smooth"
-        });
-
-    document
-        .getElementById("dateQuestion")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
 
 }
 
 
-/* =========================================================
-   MUSIC TOGGLE
-========================================================= */
+/* ==========================================
+   START EXPERIENCE
+========================================== */
 
-function toggleMusic(){
+function startExperience(){
 
-    const frame =
-        document.getElementById("musicFrame");
+    musicRequested = true;
 
-    const button =
-        document.getElementById("musicToggle");
+    setMusicStatus(
+        "STARTING..."
+    );
 
-    if(!musicStarted) return;
+    if(ytPlayer){
 
-    if(musicPlaying){
+        try{
 
-        frame.contentWindow.postMessage(
-            JSON.stringify({
-                event:"command",
-                func:"pauseVideo",
-                args:[]
-            }),
-            "*"
-        );
+            ytPlayer.unMute();
+            ytPlayer.setVolume(100);
+            ytPlayer.playVideo();
 
-        musicPlaying=false;
+        }catch(error){
 
-        button.innerText="PLAY";
+            setMusicStatus(
+                "TAP ▶ TO PLAY"
+            );
+
+        }
 
     }else{
 
-        frame.contentWindow.postMessage(
-            JSON.stringify({
-                event:"command",
-                func:"playVideo",
-                args:[]
-            }),
-            "*"
+        setMusicStatus(
+            "LOADING PLAYER..."
         );
 
-        musicPlaying=true;
+    }
 
-        button.innerText="PAUSE";
+    document.getElementById(
+        "dateQuestion"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ==========================================
+   DATE QUESTION
+========================================== */
+
+function chooseDate(answer){
+
+    const response =
+        document.getElementById(
+            "dateResponse"
+        );
+
+    if(answer === "YES"){
+
+        response.textContent =
+            "Then I think we just made a date. ❤️";
+
+        createHeartBurst();
+
+        setTimeout(function(){
+
+            document.getElementById(
+                "plannerStart"
+            ).scrollIntoView({
+                behavior:"smooth"
+            });
+
+        },900);
+
+    }else{
+
+        response.textContent =
+            "That's okay. I'll wait for your answer. ❤️";
 
     }
 
 }
 
 
-/* =========================================================
-   NO BUTTON
-========================================================= */
+/* ==========================================
+   PLANNER
+========================================== */
 
-const noMessages = [
+function showPlanner(){
 
-    "That's completely okay. ❤️ Honest answers are beautiful too.",
-
-    "No worries. I won't argue with your answer. ❤️",
-
-    "Fair enough. The invitation will stay here quietly. 🌙",
-
-    "Then maybe this page simply becomes a little rainy memory. ❤️"
-
-];
-
-let noIndex=0;
-
-function declineDate(){
-
-    const message =
-        document.getElementById("noMessage");
-
-    message.innerText =
-        noMessages[
-            Math.min(
-                noIndex,
-                noMessages.length-1
-            )
-        ];
-
-    noIndex++;
-
-    burstHearts(5);
+    document.getElementById(
+        "plannerSection"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
 
 }
 
 
-/* =========================================================
-   YES
-========================================================= */
+function updateProgress(){
 
-function sayYes(){
+    const percentage =
+        ((currentStep - 1) /
+        totalSteps) * 100;
 
-    const yesIntro =
-        document.getElementById("yesIntro");
-
-    yesIntro.classList.remove("hidden");
-
-    yesIntro.classList.add("fadeIn");
-
-    burstHearts(20);
-
-    setTimeout(
-        function(){
-
-            yesIntro.scrollIntoView({
-                behavior:"smooth"
-            });
-
-        },
-        150
-    );
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        percentage + "%";
 
 }
 
 
-/* =========================================================
-   OPEN PLANNER
-========================================================= */
+function showStep(step){
 
-function openPlanner(){
+    document
+        .querySelectorAll(".step")
+        .forEach(function(el){
 
-    const planner =
-        document.getElementById("plannerSection");
+            el.classList.remove("active");
 
-    planner.classList.remove("hidden");
+        });
 
-    planner.classList.add("fadeIn");
+    const target =
+        document.querySelector(
+            '.step[data-step="' +
+            step +
+            '"]'
+        );
 
-    setTimeout(
-        function(){
+    if(target){
+        target.classList.add("active");
+    }
 
-            planner.scrollIntoView({
-                behavior:"smooth"
-            });
-
-        },
-        100
-    );
+    updateProgress();
 
 }
 
 
-/* =========================================================
-   SELECT OPTION
-========================================================= */
+function nextStep(){
 
-function selectOption(
-    button,
-    key,
+    saveCurrentStep();
+
+    if(currentStep < totalSteps){
+
+        currentStep++;
+
+        showStep(currentStep);
+
+    }
+
+}
+
+
+function prevStep(){
+
+    saveCurrentStep();
+
+    if(currentStep > 1){
+
+        currentStep--;
+
+        showStep(currentStep);
+
+    }
+
+}
+
+
+function saveCurrentStep(){
+
+    dateData.date =
+        document.getElementById("date").value;
+
+    dateData.time =
+        document.getElementById("time").value;
+
+    dateData.memory =
+        document.getElementById("memory").value;
+
+    dateData.secret =
+        document.getElementById("secret").value;
+
+}
+
+
+/* ==========================================
+   SINGLE CHOICES
+========================================== */
+
+function selectSingle(
+    element,
+    property,
     value
 ){
 
     const parent =
-        button.parentElement;
+        element.parentElement;
 
     parent
-        .querySelectorAll(".option")
-        .forEach(
-            function(item){
+        .querySelectorAll(".choice")
+        .forEach(function(button){
 
-                item.classList.remove(
-                    "selected"
-                );
+            button.classList.remove(
+                "selected"
+            );
 
-            }
-        );
+        });
 
-    button.classList.add("selected");
+    element.classList.add("selected");
 
-    datePlan[key]=value;
-
-    savePlan();
+    dateData[property] = value;
 
 }
 
 
-/* =========================================================
-   MULTIPLE OPTIONS
-========================================================= */
+/* ==========================================
+   MULTIPLE CHOICES
+========================================== */
 
 function toggleMulti(
-    button,
+    element,
+    property,
     value
 ){
 
-    button.classList.toggle(
+    element.classList.toggle(
         "selected"
     );
 
     if(
-        button.classList.contains(
-            "selected"
-        )
+        dateData[property]
+        .includes(value)
     ){
 
-        if(
-            !datePlan.activities
-                .includes(value)
-        ){
+        dateData[property] =
+            dateData[property]
+            .filter(function(item){
 
-            datePlan.activities.push(
-                value
-            );
+                return item !== value;
 
-        }
+            });
 
     }else{
 
-        datePlan.activities =
-            datePlan.activities.filter(
-                function(item){
-
-                    return item!==value;
-
-                }
-            );
-
-    }
-
-    savePlan();
-
-}
-
-
-/* =========================================================
-   VALIDATION
-========================================================= */
-
-function validateStep(){
-
-    if(currentStep===1){
-
-        const value =
-            document.getElementById(
-                "dateInput"
-            ).value;
-
-        if(!value){
-
-            alert(
-                "Choose a date for our little adventure ❤️"
-            );
-
-            return false;
-
-        }
-
-        datePlan.date=value;
-
-    }
-
-
-    if(currentStep===2){
-
-        const value =
-            document.getElementById(
-                "timeInput"
-            ).value;
-
-        if(!value){
-
-            alert(
-                "Choose a time. I need to know when to start getting nervous. ❤️"
-            );
-
-            return false;
-
-        }
-
-        datePlan.time=value;
-
-    }
-
-
-    if(currentStep===3 &&
-       !datePlan.place){
-
-        alert(
-            "Choose somewhere for us to go ❤️"
-        );
-
-        return false;
-
-    }
-
-
-    if(currentStep===4 &&
-       !datePlan.mood){
-
-        alert(
-            "Choose the mood for our date ❤️"
-        );
-
-        return false;
-
-    }
-
-
-    if(currentStep===5 &&
-       !datePlan.food){
-
-        alert(
-            "We should probably decide what we're eating 😌"
-        );
-
-        return false;
-
-    }
-
-
-    if(currentStep===6 &&
-       datePlan.activities.length===0){
-
-        alert(
-            "Choose at least one thing for us to do ❤️"
-        );
-
-        return false;
-
-    }
-
-
-    if(currentStep===7 &&
-       !datePlan.music){
-
-        alert(
-            "Choose our soundtrack ❤️"
-        );
-
-        return false;
-
-    }
-
-
-    if(currentStep===8 &&
-       !datePlan.outfit){
-
-        alert(
-            "Choose an outfit. I promise I won't judge. ❤️"
-        );
-
-        return false;
-
-    }
-
-
-    if(currentStep===9){
-
-        datePlan.memory =
-            document.getElementById(
-                "memoryInput"
-            ).value.trim();
-
-    }
-
-
-    if(currentStep===10){
-
-        datePlan.secret =
-            document.getElementById(
-                "secretInput"
-            ).value.trim();
-
-    }
-
-
-    savePlan();
-
-    return true;
-
-}
-
-
-/* =========================================================
-   NEXT STEP
-========================================================= */
-
-function nextStep(){
-
-    if(!validateStep()) return;
-
-    if(currentStep<totalSteps){
-
-        currentStep++;
-
-        showStep();
+        dateData[property].push(value);
 
     }
 
 }
 
 
-/* =========================================================
-   PREVIOUS STEP
-========================================================= */
-
-function previousStep(){
-
-    if(currentStep>1){
-
-        currentStep--;
-
-        showStep();
-
-    }
-
-}
-
-
-/* =========================================================
-   SHOW STEP
-========================================================= */
-
-function showStep(){
-
-    document
-        .querySelectorAll(".step")
-        .forEach(
-            function(step){
-
-                step.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-    const target =
-        document.querySelector(
-            `.step[data-step="${currentStep}"]`
-        );
-
-    if(target){
-
-        target.classList.add(
-            "active"
-        );
-
-    }
-
-    document
-        .getElementById("stepCounter")
-        .innerText =
-            String(currentStep)
-            .padStart(2,"0")
-            + " / "
-            + totalSteps;
-
-    document
-        .getElementById("progressFill")
-        .style.width =
-            (
-                currentStep /
-                totalSteps *
-                100
-            )+"%";
-
-}
-
-
-/* =========================================================
-   FORMAT DATE
-========================================================= */
-
-function formatDate(value){
-
-    if(!value){
-        return "Not selected";
-    }
-
-    const parts =
-        value.split("-");
-
-    if(parts.length!==3){
-        return value;
-    }
-
-    const date =
-        new Date(
-            Number(parts[0]),
-            Number(parts[1])-1,
-            Number(parts[2])
-        );
-
-    return date.toLocaleDateString(
-        undefined,
-        {
-            weekday:"long",
-            year:"numeric",
-            month:"long",
-            day:"numeric"
-        }
-    );
-
-}
-
-
-/* =========================================================
-   FORMAT TIME
-========================================================= */
-
-function formatTime(value){
-
-    if(!value){
-        return "Not selected";
-    }
-
-    const parts =
-        value.split(":");
-
-    if(parts.length<2){
-        return value;
-    }
-
-    let hour =
-        Number(parts[0]);
-
-    const minute =
-        parts[1];
-
-    const suffix =
-        hour>=12
-        ? "PM"
-        : "AM";
-
-    hour =
-        hour%12 || 12;
-
-    return (
-        hour
-        + ":"
-        + minute
-        + " "
-        + suffix
-    );
-
-}
-
-
-/* =========================================================
+/* ==========================================
    FINISH DATE
-========================================================= */
+========================================== */
 
 function finishDate(){
 
-    if(!validateStep()) return;
+    saveCurrentStep();
 
-    document
-        .getElementById("resultDate")
-        .innerText =
-            formatDate(
-                datePlan.date
-            );
+    document.getElementById(
+        "resultDate"
+    ).textContent =
+        dateData.date || "Whenever feels right";
 
-    document
-        .getElementById("resultTime")
-        .innerText =
-            formatTime(
-                datePlan.time
-            );
+    document.getElementById(
+        "resultTime"
+    ).textContent =
+        dateData.time || "When the moment feels right";
 
-    document
-        .getElementById("resultPlace")
-        .innerText =
-            datePlan.place
-            || "We'll decide together";
+    document.getElementById(
+        "resultPlace"
+    ).textContent =
+        dateData.place || "Somewhere beautiful";
 
-    document
-        .getElementById("resultMood")
-        .innerText =
-            datePlan.mood
-            || "Whatever feels natural";
+    document.getElementById(
+        "resultMood"
+    ).textContent =
+        dateData.mood || "Whatever feels natural";
 
-    document
-        .getElementById("resultFood")
-        .innerText =
-            datePlan.food
-            || "Something delicious";
+    document.getElementById(
+        "resultFood"
+    ).textContent =
+        dateData.food || "Something delicious";
 
-    document
-        .getElementById("resultMusic")
-        .innerText =
-            datePlan.music
-            || "We'll find the right song";
+    document.getElementById(
+        "resultActivities"
+    ).textContent =
+        dateData.activities.length
+        ? dateData.activities.join(", ")
+        : "Just being together";
 
-    document
-        .getElementById("resultOutfit")
-        .innerText =
-            datePlan.outfit
-            || "A surprise";
+    document.getElementById(
+        "resultSoundtrack"
+    ).textContent =
+        dateData.soundtrack || "Our own soundtrack";
 
-    document
-        .getElementById("resultActivities")
-        .innerText =
-            datePlan.activities.length
-            ? datePlan.activities.join(", ")
-            : "We'll see where the day takes us";
+    document.getElementById(
+        "resultOutfit"
+    ).textContent =
+        dateData.outfit || "Something that feels like you";
 
-    document
-        .getElementById("resultMemory")
-        .innerText =
-            datePlan.memory
-            || "Nothing written. We'll discover something naturally.";
+    document.getElementById(
+        "resultMemory"
+    ).textContent =
+        dateData.memory || "A memory we'll create together";
 
-    document
-        .getElementById("resultSecret")
-        .innerText =
-            datePlan.secret
-            || "Some secrets are better left for the actual date.";
+    document.getElementById(
+        "resultSecret"
+    ).textContent =
+        dateData.secret || "Still a secret ❤️";
 
     const result =
         document.getElementById(
             "resultSection"
         );
 
-    result.classList.remove(
-        "hidden"
-    );
+    result.style.display = "flex";
 
-    result.classList.add(
-        "fadeIn"
-    );
+    result.classList.add("visible");
 
-    burstHearts(25);
+    createHeartBurst();
 
-    setTimeout(
-        function(){
+    setTimeout(function(){
 
-            result.scrollIntoView({
-                behavior:"smooth"
-            });
+        result.scrollIntoView({
+            behavior:"smooth"
+        });
 
-        },
-        200
-    );
+    },200);
 
 }
 
 
-/* =========================================================
-   UNLOCK STORY
-========================================================= */
+/* ==========================================
+   STORY
+========================================== */
 
-function unlockStory(){
+function goToStory(){
 
-    document
-        .querySelectorAll(".story")
-        .forEach(
-            function(section){
-
-                section.classList.add(
-                    "unlocked"
-                );
-
-            }
+    const story =
+        document.querySelector(
+            ".story"
         );
 
-    burstHearts(35);
-
-    setTimeout(
-        function(){
-
-            document
-                .getElementById(
-                    "storyIntro"
-                )
-                .scrollIntoView({
-                    behavior:"smooth"
-                });
-
-        },
-        200
-    );
+    story.scrollIntoView({
+        behavior:"smooth"
+    });
 
 }
 
 
-/* =========================================================
-   SAVE PLAN
-========================================================= */
+/* ==========================================
+   RAIN
+========================================== */
 
-function savePlan(){
+function createRain(){
 
-    try{
+    const rain =
+        document.getElementById("rain");
 
-        localStorage.setItem(
-            "ourLittleDatePlan",
-            JSON.stringify(
-                datePlan
-            )
-        );
+    for(let i=0;i<90;i++){
 
-    }catch(error){
+        const drop =
+            document.createElement("div");
 
-        /* Storage may be disabled.
-           The experience still works. */
+        drop.className = "drop";
+
+        drop.style.left =
+            Math.random() * 100 + "%";
+
+        drop.style.animationDuration =
+            (0.7 + Math.random()*1.4) + "s";
+
+        drop.style.animationDelay =
+            Math.random() * 2 + "s";
+
+        drop.style.opacity =
+            (0.1 + Math.random()*.4);
+
+        rain.appendChild(drop);
 
     }
 
 }
 
 
-/* =========================================================
-   LOAD SAVED PLAN
-========================================================= */
+/* ==========================================
+   HEART BURST
+========================================== */
 
-function loadSavedPlan(){
+function createHeartBurst(){
 
-    try{
+    for(let i=0;i<18;i++){
 
-        const saved =
-            localStorage.getItem(
-                "ourLittleDatePlan"
+        setTimeout(function(){
+
+            const heart =
+                document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.textContent =
+                Math.random() > .5
+                ? "♥"
+                : "♡";
+
+            heart.style.left =
+                (10 + Math.random()*80) + "%";
+
+            heart.style.bottom =
+                "20px";
+
+            heart.style.fontSize =
+                (10 + Math.random()*20) + "px";
+
+            heart.style.animationDuration =
+                (3 + Math.random()*3) + "s";
+
+            document.body.appendChild(
+                heart
             );
 
-        if(!saved) return;
+            setTimeout(function(){
 
-        const parsed =
-            JSON.parse(saved);
+                heart.remove();
 
-        Object.assign(
-            datePlan,
-            parsed
-        );
+            },6000);
 
-        if(
-            datePlan.date
-        ){
-
-            document
-                .getElementById(
-                    "dateInput"
-                )
-                .value =
-                    datePlan.date;
-
-        }
-
-        if(
-            datePlan.time
-        ){
-
-            document
-                .getElementById(
-                    "timeInput"
-                )
-                .value =
-                    datePlan.time;
-
-        }
-
-        if(
-            datePlan.memory
-        ){
-
-            document
-                .getElementById(
-                    "memoryInput"
-                )
-                .value =
-                    datePlan.memory;
-
-        }
-
-        if(
-            datePlan.secret
-        ){
-
-            document
-                .getElementById(
-                    "secretInput"
-                )
-                .value =
-                    datePlan.secret;
-
-        }
-
-        restoreSelectedOptions();
-
-    }catch(error){
-
-        console.log(
-            "Saved plan could not be loaded."
-        );
+        },i*100);
 
     }
 
 }
 
 
-/* =========================================================
-   RESTORE SELECTED OPTIONS
-========================================================= */
+/* ==========================================
+   RANDOM FLOATING HEARTS
+========================================== */
 
-function restoreSelectedOptions(){
+setInterval(function(){
 
-    document
-        .querySelectorAll(".option")
-        .forEach(
-            function(button){
+    if(Math.random() > .65){
 
-                const text =
-                    button.innerText
-                    .toLowerCase();
+        const heart =
+            document.createElement("div");
 
-                const values = [
-                    datePlan.place,
-                    datePlan.mood,
-                    datePlan.food,
-                    datePlan.music,
-                    datePlan.outfit
-                ];
+        heart.className = "heart";
 
-                values.forEach(
-                    function(value){
+        heart.textContent =
+            Math.random() > .5
+            ? "♥"
+            : "♡";
 
-                        if(
-                            value &&
-                            text.includes(
-                                value
-                                    .toLowerCase()
-                                    .split(" ")[0]
-                            )
-                        ){
+        heart.style.left =
+            Math.random()*100 + "%";
 
-                            /*
-                               Do not automatically select
-                               ambiguous options.
-                            */
+        heart.style.bottom =
+            "-20px";
 
-                        }
+        heart.style.fontSize =
+            (8 + Math.random()*13) + "px";
 
-                    }
-                );
+        heart.style.animationDuration =
+            (7 + Math.random()*5) + "s";
 
-            }
+        document.body.appendChild(
+            heart
         );
 
-}
-
-
-/* =========================================================
-   HEART BURST
-========================================================= */
-
-function burstHearts(amount){
-
-    for(
-        let i=0;
-        i<amount;
-        i++
-    ){
-
-        setTimeout(
-            function(){
-
-                createHeart();
-
-            },
-            i*70
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   CREATE HEART
-========================================================= */
-
-function createHeart(){
-
-    const heart =
-        document.createElement(
-            "div"
-        );
-
-    heart.className="heart";
-
-    heart.innerText =
-        Math.random()>.25
-        ? "♥"
-        : "♡";
-
-    heart.style.left =
-        Math.random()*100+"vw";
-
-    heart.style.bottom =
-        (-20 + Math.random()*30)+"px";
-
-    heart.style.fontSize =
-        (10 + Math.random()*22)+"px";
-
-    const duration =
-        4 + Math.random()*5;
-
-    heart.style.animationDuration =
-        duration+"s";
-
-    document.body.appendChild(
-        heart
-    );
-
-    setTimeout(
-        function(){
+        setTimeout(function(){
 
             heart.remove();
 
-        },
-        duration*1000 + 500
-    );
+        },13000);
+
+    }
+
+},1200);
+
+
+/* ==========================================
+   SCROLL REVEALS
+========================================== */
+
+function setupReveal(){
+
+    const elements =
+        document.querySelectorAll(
+            ".reveal"
+        );
+
+    const observer =
+        new IntersectionObserver(
+            function(entries){
+
+                entries.forEach(function(entry){
+
+                    if(entry.isIntersecting){
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold:.12
+            }
+        );
+
+    elements.forEach(function(element){
+
+        observer.observe(element);
+
+    });
 
 }
 
 
-/* =========================================================
-   BACKGROUND HEARTS
-========================================================= */
-
-setInterval(
-    function(){
-
-        if(
-            Math.random()<.45
-        ){
-
-            createHeart();
-
-        }
-
-    },
-    2500
-);
-
-
-/* =========================================================
-   SCROLL PROGRESS
-========================================================= */
+/* ==========================================
+   INIT
+========================================== */
 
 window.addEventListener(
-    "scroll",
+    "load",
     function(){
 
-        const scrollTop =
-            window.scrollY;
+        createRain();
 
-        const height =
-            document.documentElement
-                .scrollHeight
-            -
-            window.innerHeight;
+        setupReveal();
 
-        if(height<=0) return;
+        setTimeout(function(){
 
-        const progress =
-            scrollTop /
-            height *
-            100;
+            document.getElementById(
+                "loader"
+            ).classList.add("hide");
 
-        document
-            .getElementById(
-                "scrollProgress"
-            )
-            .style.width =
-                progress+"%";
+        },1200);
 
-    },
-    {
-        passive:true
-    }
-);
-
-
-/* =========================================================
-   VIBRATION
-========================================================= */
-
-document.addEventListener(
-    "click",
-    function(event){
-
-        const target =
-            event.target;
-
-        if(
-            target.matches(
-                ".btn.primary,.playButton"
-            )
-        ){
-
-            if(
-                navigator.vibrate
-            ){
-
-                navigator.vibrate(
-                    25
-                );
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   KEYBOARD SUPPORT
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.key==="Escape"
-        ){
-
-            document
-                .getElementById(
-                    "musicBar"
-                )
-                .classList.remove(
-                    "show"
-                );
-
-        }
+        showStep(1);
 
     }
 );
